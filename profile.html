@@ -256,6 +256,24 @@
       var inform_after;
      
      function setname(){
+        var name = Parse.Object.extend("name");
+        var info = new name();
+        
+        alert(userid);
+        alert(username);
+        info.set("id",userid);
+        info.set("username",username);
+        
+        info.save(null,{
+            success: function(info){
+              //console.log(info_p);
+                alert("name save successfully!");
+            },
+            error: function(info,error){
+              console.log(error);
+              alert(error.message);
+            }
+        });
        
        
      }
@@ -331,24 +349,7 @@
             }
           });
           
-        var name = Parse.Object.extend("name");
-        var info = new name();
-        
-        alert(userid);
-        alert(username);
-        info.set("id",userid);
-        info.set("username",username);
-        
-        info.save(null,{
-            success: function(info){
-              //console.log(info_p);
-                alert("name save successfully!");
-            },
-            error: function(info,error){
-              console.log(error);
-              alert(error.message);
-            }
-        });
+
         }
 
 /*
@@ -618,6 +619,8 @@
           type : 'iframe',
           padding : 5
         });
+        
+        setname();
       });
 
 
