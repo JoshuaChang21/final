@@ -189,6 +189,7 @@
       }
 
       var j;
+      var userid;
       function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me/picture', function (response) {
@@ -203,10 +204,11 @@
           success:function(array1){
             console.log(array1);
             j=0;
+            userinfo = [];
             var array_length = array1.length;
             
             var userid = [];
-            var userinfo = [];
+             
             var userrate = [];
             var same;
             var k;
