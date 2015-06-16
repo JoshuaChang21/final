@@ -188,6 +188,7 @@
          location.reload();
       }
 
+      var j;
       function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me/picture', function (response) {
@@ -201,9 +202,9 @@
         info_p.find({
           success:function(array1){
             console.log(array1);
-
+            j=0;
             var array_length = array1.length;
-            var j=0;
+            
             var userid = [];
             var userinfo = [];
             var userrate = [];
