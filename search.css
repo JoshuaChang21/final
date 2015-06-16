@@ -48,7 +48,9 @@
 .pict{
   width:100px;
   height:100px;
+  margin:auto;
 }
+
 
 .profileInfo > div{
   font-size:20px;
