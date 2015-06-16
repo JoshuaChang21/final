@@ -250,10 +250,15 @@
                     if(userid[x] == array2[y].get('userid')){
                       console.log('123');
                       u_name[x] = array2[y].get('username');
+
                     }
 
                   }
                 }
+                $('#name1').html(u_name[0]);
+                $('#name2').html(u_name[1]);
+                $('#name3').html(u_name[2]);
+
 
 
                    
@@ -276,9 +281,7 @@
             $('#followPic3').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[2]+'/picture"/>');
             $('#info3').append(userinfo[2]);
             $('#rate3').append(userrate[2]);
-            $('#name1').html(u_name[0]);
-            $('#name2').html(u_name[1]);
-            $('#name3').html(u_name[2]); 
+             
           },
           error: function(error) {
               console.log(error) ;
