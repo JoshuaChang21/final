@@ -265,11 +265,11 @@
         info.set("username",username);
         
         info.save(null,{
-            success: function(info){
+            success: function(savedParseObject){
               //console.log(info_p);
                 alert("name save successfully!");
             },
-            error: function(info,error){
+            error: function(errorObjec){
               console.log(error);
               alert(error.message);
             }
