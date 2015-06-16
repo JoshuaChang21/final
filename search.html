@@ -188,8 +188,7 @@
          location.reload();
       }
 
-      var j;
-      var userid;
+      
       function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me/picture', function (response) {
@@ -203,8 +202,8 @@
         info_p.find({
           success:function(array1){
             console.log(array1);
-            j=0;
-            userinfo = [];
+            var j=0;
+            var userinfo = [];
             var array_length = array1.length;
             
             var userid = [];
@@ -235,23 +234,6 @@
               }          
             }
 
-            $('#followPic1').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[0]+'/picture"/>');
-            $('#info1').append(userinfo[0]);
-            $('#rate1').append(userrate[0]);
-            //$('#name1').html('src="https://graph.facebook.com/' + userid[0] + '?fields=name"');
-            $('#followPic2').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[1]+'/picture"/>');
-            $('#info2').append(userinfo[1]);
-            $('#rate2').append(userrate[1]);
-            $('#followPic3').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[2]+'/picture"/>');
-            $('#info3').append(userinfo[2]);
-            $('#rate3').append(userrate[2]);
-          },
-          error: function(error) {
-              console.log(error) ;
-              alert(error.message);
-            }
-          });
-
           var name = Parse.Object.extend("name");
           var name_get = new Parse.Query(name);
           var x;
@@ -270,9 +252,7 @@
                   }
                 }
 
-                $('#name1').html(u_name[0]);
-                $('#name2').html(u_name[1]);
-                $('#name3').html(u_name[2]);    
+                   
               },
               error: function(error) {
                 console.log(error) ;
@@ -280,6 +260,29 @@
               }
               
             });
+
+
+            $('#followPic1').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[0]+'/picture"/>');
+            $('#info1').append(userinfo[0]);
+            $('#rate1').append(userrate[0]);
+            //$('#name1').html('src="https://graph.facebook.com/' + userid[0] + '?fields=name"');
+            $('#followPic2').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[1]+'/picture"/>');
+            $('#info2').append(userinfo[1]);
+            $('#rate2').append(userrate[1]);
+            $('#followPic3').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[2]+'/picture"/>');
+            $('#info3').append(userinfo[2]);
+            $('#rate3').append(userrate[2]);
+            $('#name1').html(u_name[0]);
+            $('#name2').html(u_name[1]);
+            $('#name3').html(u_name[2]); 
+          },
+          error: function(error) {
+              console.log(error) ;
+              alert(error.message);
+            }
+          });
+
+         
         }
 
     var value;
