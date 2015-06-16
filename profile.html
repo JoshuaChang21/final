@@ -147,6 +147,8 @@
               alert("註冊完成並且透過臉書登入");
             } else {
               alert("透過臉書登入成功");
+              location.reload();
+
             }
           //切換至預先寫好登入後的介面
               FB.getLoginStatus(function(response) {
@@ -298,7 +300,7 @@
         alert(username);
         });
         
-        
+
         var personalinfo = Parse.Object.extend("personalinfo"); 
         var info_p = new Parse.Query(personalinfo);
 
