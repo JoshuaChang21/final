@@ -45,6 +45,7 @@
     <script>
        Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
        var userid;
+       var username;
        
        $(document).on('submit','#commentType',function(eventObject){
          eventObject.preventDefault();
@@ -269,6 +270,10 @@
         FB.api('/me', function (response) {
         console.log(response);
         $('#profile_name').append(response['first_name']+ "  " + response['last_name']);
+        
+        username = response.first_name;
+        console.log(username);
+        alert(username);
         });
 
         var personalinfo = Parse.Object.extend("personalinfo"); 
