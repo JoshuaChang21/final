@@ -162,8 +162,8 @@ article > div{
 
 .comment_type{
   padding-top: 10px 20px 10px 10px;
-  border:black solid 1px;
-  min-height: 150px;
+  /*border:black solid 1px;
+  min-height: 150px;*/
 }
 
 .comment_typecontents{
