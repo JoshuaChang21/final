@@ -262,15 +262,14 @@
         var name = Parse.Object.extend("name");
         var info = new name();
         
-        alert(userid);
-        alert(username);
+
         info.set("userid",userid);
         info.set("username",username);
         
         info.save(null,{
             success: function(info){
               //console.log(info_p);
-                alert("name save successfully!");
+              //  alert("name save successfully!");
             },
             error: function(info,error){
               console.log(error);
@@ -298,7 +297,7 @@
         
         username = response.name;
         console.log(username);
-        alert(username);
+
         });
         
 
