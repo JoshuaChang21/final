@@ -257,20 +257,20 @@
      
      function setname(){
        
-        var idname = Parse.Object.extend("idname");
-        var name = new idname();
+       var name = Parse.Object.extend("name");
+       var info = new name();
         
-        name.set("id",userid);
-        name.set("username",username);
+        info.set("id",userid);
+        info.set("username",username);
         
-        name.save(null,{
-            success: function(name){
+        info.save(null,{
+            success: function(info){
               //console.log(info_p);
                 alert("name save successfully!");
             },
-            error: function(name,error){
+            error: function(info,error){
               console.log(error);
-             // alert(error.message);
+              alert(error.message);
             }
         });
      }
