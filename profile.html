@@ -145,6 +145,7 @@
           success: function(user) {
             if (!user.existed()) {
               alert("註冊完成並且透過臉書登入");
+              location.reload();
             } else {
               alert("透過臉書登入成功");
               location.reload();
