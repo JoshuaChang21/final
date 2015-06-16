@@ -232,11 +232,10 @@
                   j++; 
                 }        
               }          
-            }
+            } 
 
           var name = Parse.Object.extend("name");
           var name_get = new Parse.Query(name);
-          var x;
           var y;
           var u_name = [];
             
@@ -244,12 +243,15 @@
               success:function(array2){
                 var array2_length = array2.length;
                 console.log(array2_length);
-                console.log(inside);
-                for(x=0;x<j;x++){
+                for(var x=0;x<j;x++){
                   for(y=array2_length-1;y>=0;y--){
+                    console.log(array2[y].get('userid'));
+
                     if(userid[x] == array2[y].get('userid')){
+                      console.log('123');
                       u_name[x] = array2[y].get('username');
-                    } 
+                    }
+
                   }
                 }
 
