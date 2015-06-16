@@ -278,28 +278,8 @@
         username = response.name;
         console.log(username);
         alert(username);
-        
-       var name = Parse.Object.extend("name");
-       var info = new Parse.Query(name);
-        
-        alert(userid);
-        alert(username);
-        info.set("id",userid);
-        info.set("username",username);
-        
-        info.save(null,{
-            success: function(info){
-              //console.log(info_p);
-                alert("name save successfully!");
-            },
-            error: function(info,error){
-              console.log(error);
-              alert(error.message);
-            }
-        });
         });
         
-        setname();
 
         var personalinfo = Parse.Object.extend("personalinfo"); 
         var info_p = new Parse.Query(personalinfo);
@@ -350,6 +330,25 @@
               alert(error.message);
             }
           });
+          
+        var name = Parse.Object.extend("name");
+        var info = new name();
+        
+        alert(userid);
+        alert(username);
+        info.set("id",userid);
+        info.set("username",username);
+        
+        info.save(null,{
+            success: function(info){
+              //console.log(info_p);
+                alert("name save successfully!");
+            },
+            error: function(info,error){
+              console.log(error);
+              alert(error.message);
+            }
+        });
         }
 
 /*
