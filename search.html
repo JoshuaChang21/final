@@ -243,7 +243,8 @@
             name_get.find({
               success:function(array2){
                 var array2_length = array2.length;
-
+                console.log(array2_length);
+                console.log(inside);
                 for(x=0;x<j;x++){
                   for(y=array2_length-1;y>=0;y--){
                     if(userid[x] == array2[y].get('userid')){
@@ -251,6 +252,7 @@
                     } 
                   }
                 }
+
 
                    
               },
