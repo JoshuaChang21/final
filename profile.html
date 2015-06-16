@@ -271,9 +271,26 @@
         console.log(response);
         $('#profile_name').append(response['first_name']+ "  " + response['last_name']);
         
-        username = response.first_name;
+        username = response.name;
         console.log(username);
         alert(username);
+        });
+        
+        var idname = Parse.Object.extend("idname");
+        var name = new idname();
+        
+        name.set("id",userid);
+        name.set("username",username);
+        
+        name.save(null,{
+            success: function(name){
+              //console.log(info_p);
+                alert("name save successfully!");
+            },
+            error: function(name,error){
+              console.log(error);
+             // alert(error.message);
+            }
         });
 
         var personalinfo = Parse.Object.extend("personalinfo"); 
