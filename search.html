@@ -216,7 +216,6 @@
             for(var i=array_length-1; i>=0 ;i--){
               same= false;
 
-              if(array1[i].get('fb_id') != userid){
                  if(array1[i].get(value) == true){
                   console.log('i is'+ i);
 
@@ -227,15 +226,19 @@
                   }  
                   
                   if(same == false){
-
+                    if(array[i].get('fb_id') == userid){
+                      console.log('is urself');
+                    }
+                    else {
                     u_id[j]= array1[i].get('fb_id');
                     userinfo[j] = array1[i].get('information');
                     userrate[j]= array1[i].get('star');
                     console.log('facebookid is ' + u_id[j]);
                     j++; 
+                    }
                   }        
                 }
-              }          
+                       
             } 
 
           var name = Parse.Object.extend("name");
