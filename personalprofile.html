@@ -282,9 +282,11 @@
 
       function testAPI() {  
         console.log('Welcome!  Fetching your information.... ');
+        
         FB.api('/me/picture', function (response) {
         $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
-        });
+        
+        /*});
         
 
         FB.api('/me/picture?type=large', function (response) {
@@ -294,10 +296,7 @@
         FB.api('/me', function (response) {
         console.log(response);
         $('#profile_name').append(response['first_name']+ "  " + response['last_name']);
-        
-        username = response.name;
-        console.log(username);
-
+        */
         });
         
 
@@ -312,7 +311,7 @@
 
             for(var i=array_length-1; i>=0 ;i--){
               var facebookid = array1[i].get('fb_id');
-              if(facebookid == userid){
+              if(facebookid == value){
                 console.log('haha');
                 console.log('i is'+ i);
                 f=array1[i].get('frence');
@@ -369,7 +368,7 @@
             return value;
         }
 
-         $(document).ready(function() {
+        $(document).ready(function() {
        
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
 
