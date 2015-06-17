@@ -18,3 +18,23 @@
 #container > form > div{
   margin:30px 20px;
 }
+
+.displayinline > li > span{
+	width:50px;
+}
+
+.ch1{
+	margin-right: 20px;
+}
+
+.jp1{
+	margin-right: 7px;
+}
+
+.th1{
+	margin-right: 27px;
+}
+
+.en1{
+	margin-right: 3px;
+}
