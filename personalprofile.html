@@ -286,6 +286,7 @@
         FB.api('/me/picture', function (response) {
         $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
         
+
         /*});
         
 
@@ -298,6 +299,36 @@
         $('#profile_name').append(response['first_name']+ "  " + response['last_name']);
         */
         });
+
+          var name = Parse.Object.extend("name");
+          var name_get = new Parse.Query(name);
+          var y;
+          var u_name;
+            
+            name_get.find({
+              success:function(array2){
+                var array2_length = array2.length;
+                console.log(array2_length);
+ 
+                  for(y=array2_length-1;y>=0;y--){
+                    console.log(array2[y].get('userid'));
+
+                    if(value == array2[y].get('userid')){
+                      console.log('123');
+                      u_name = array2[y].get('username');
+                    }
+                }
+                $('#profile_name').append(u_name);                 
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              }
+              
+            });
+
+        $('#profile_img').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+value+'/picture"/>');
+
         
 
         var personalinfo = Parse.Object.extend("personalinfo"); 
