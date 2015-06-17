@@ -334,6 +334,7 @@
         var personalinfo = Parse.Object.extend("personalinfo"); 
         var info_p = new Parse.Query(personalinfo);
 
+        
         info_p.find({
           success:function(array1){
             console.log(array1);
