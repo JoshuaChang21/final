@@ -318,25 +318,55 @@
                 f=array1[i].get('frence');
                 j=array1[i].get('japan');
                 s=array1[i].get('spain');
+                t=array1[i].get('taiwan');
+                u=array1[i].get('usa');
+                g=array1[i].get('germany');
+                h=array1[i].get('hongkong');
+                th=array1[i].get('thailand');
+                k=array1[i].get('korea');
                 starnum=array1[i].get('star');
                 inform_after =array1[i].get('information');
                 pref= array1[i].get('preference');
 
                 i=-1;
               }
-
-            }
-            if(f==true){
-              $('#language').append("FRENCH ");
             }
 
-            if(s==true){
-              $('#language').append("SPAINISH ");
-            }
+                if(f==true){
+                  $('#language').append("FRENCH ");
+                }
 
-            if(j== true){
-              $('#language').append("JAPAN ");
-            }
+                if(s==true){
+                  $('#language').append("SPAINISH ");
+                }
+
+                if(j== true){
+                  $('#language').append("JAPANESE ");
+                }
+
+                if(t==true){
+                  $('#language').append("CHINESE ");
+                }
+
+                if(u==true){
+                  $('#language').append("ENGLISH ");
+                }
+
+                if(g==true){
+                  $('#language').append("GERMAN ");
+                }
+
+                if(h==true){
+                  $('#language').append("CANTONESE ");
+                }
+
+                if(th==true){
+                  $('#language').append("THAI ");
+                }
+
+                if(k==true){
+                  $('#language').append("KOREAN ");
+                }
 
             $('#star').append(starnum);
             $('#prefer').append(pref);
@@ -450,19 +480,19 @@
                   </ul>
                   </div>
                   
-                  <div class="display_inline">
+                 <div class="display_inline">
                   <ul>
-                  <li><a href="#"><img src="spain.jpg" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="#"><img src="japan.jpg" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="#"><img src="french.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=taiwan"><img src="taiwan.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=usa"><img src="usa.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=germany"><img src="germany.jpg" class="img-circle" width="50" height="50"></a></li>
                   </ul>
                   </div>
 
                   <div class="display_inline">
                   <ul>
-                  <li><a href="#"><img src="spain.jpg" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="#"><img src="japan.jpg" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="#"><img src="french.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=hongkong"><img src="hongkong.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=thailand"><img src="thailand.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=korea"><img src="korea.jpg" class="img-circle" width="50" height="50"></a></li>
                   </ul>
                   </div>
                 </ul>

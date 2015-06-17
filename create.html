@@ -257,10 +257,23 @@
           var lang_japan = document.getElementById('lang_japan');
           var lang_spain = document.getElementById('lang_spain');
           var lang_frence = document.getElementById('lang_frence');
+          var lang_taiwan = document.getElementById('lang_taiwan');
+          var lang_usa = document.getElementById('lang_usa');
+          var lang_germany = document.getElementById('lang_germany');
+          var lang_hongkong = document.getElementById('lang_hongkong');
+          var lang_thailand = document.getElementById('lang_thailand');
+          var lang_korea = document.getElementById('lang_korea');
 
           info_p.set("japan",false);
           info_p.set("spain",false);
           info_p.set("frence",false);
+          info_p.set("taiwan",false);
+          info_p.set("usa",false);
+          info_p.set("germany",false);
+          info_p.set("hongkong",false);
+          info_p.set("thailand",false);
+          info_p.set("korea",false);
+
 
           if(lang_japan.checked){
             info_p.set("japan", true);
@@ -278,6 +291,35 @@
             console.log('french is selected');
           }
 
+          if(lang_taiwan.checked){
+            info_p.set("taiwan", true);
+            console.log('taiwan is selected');
+          }
+
+          if(lang_usa.checked){
+            info_p.set("usa", true);
+            console.log('usa is selected');
+          }
+
+          if(lang_germany.checked){
+            info_p.set("germany", true);
+            console.log('germany is selected');
+          }
+
+          if(lang_hongkong.checked){
+            info_p.set("hongkong", true);
+            console.log('hongkong is selected');
+          }
+
+          if(lang_thailand.checked){
+            info_p.set("thailand", true);
+            console.log('thailand is selected');
+          }
+
+          if(lang_korea.checked){
+            info_p.set("korea", true);
+            console.log('korea is selected');
+          }
           else{
             console.log('no language');
           }
@@ -428,29 +470,29 @@
 
           <div class="displayinline">
           <li>
-          <input type="checkbox" name="lang_japan" id="lang_japan">  <img src="japan.jpg" class="img-circle">
+          <input type="checkbox" name="lang_taiwan" id="lang_taiwan">  <img src="japan.jpg" class="img-circle">
           <span>Japanese</span></li>
 
           <li>
-          <input type="checkbox" name="lang_spain" id="lang_spain">  <img src="spain.jpg" class="img-circle">
+          <input type="checkbox" name="lang_usa" id="lang_usa">  <img src="spain.jpg" class="img-circle">
           <span>Spanish</span></li>
 
           <li>
-          <input type="checkbox" name="lang_frence" id="lang_frence">  <img src="french.jpg" class="img-circle">
+          <input type="checkbox" name="lang_germany" id="lang_germany">  <img src="french.jpg" class="img-circle">
           <span>French</span></li>
           </div>
 
           <div class="displayinline">
           <li>
-          <input type="checkbox" name="lang_japan" id="lang_japan">  <img src="japan.jpg" class="img-circle">
+          <input type="checkbox" name="lang_hongkong" id="lang_hongkong">  <img src="japan.jpg" class="img-circle">
           <span>Japanese</span></li>
 
           <li>
-          <input type="checkbox" name="lang_spain" id="lang_spain">  <img src="spain.jpg" class="img-circle">
+          <input type="checkbox" name="lang_thailand" id="lang_thailand">  <img src="spain.jpg" class="img-circle">
           <span>Spanish</span></li>
 
           <li>
-          <input type="checkbox" name="lang_frence" id="lang_frence">  <img src="french.jpg" class="img-circle">
+          <input type="checkbox" name="lang_korea" id="lang_korea">  <img src="french.jpg" class="img-circle">
           <span>French</span></li>
           </div>  
 
