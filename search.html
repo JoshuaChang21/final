@@ -23,7 +23,7 @@
 
 
     <script>
-    /*
+        var userid;
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
        
        window.fbAsyncInit = function() {
@@ -77,7 +77,7 @@
         js.src = "//connect.facebook.net/en_US/all.js";
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-      */
+      
 
         $(document).on('click','#LogIn',function(e){
             console.log('click the button!!!');
@@ -96,7 +96,7 @@
             logout();
         });
 
-        var userid;
+        
       function fblogin(){
 
         Parse.FacebookUtils.logIn(null, {
@@ -143,6 +143,9 @@
         function statusChangeCallback(response) {
             console.log('statusChangeCallback');
             console.log(response);
+
+            userid=response.authResponse.userID;
+            console.log('usererid: '+userid);
               // The response object is returned with a status field that lets the
               // app know the current login status of the person.
               // Full docs on the response object can be found in the documentation
