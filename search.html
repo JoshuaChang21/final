@@ -258,6 +258,9 @@
                 $('#name1').html(u_name[0]);
                 $('#name2').html(u_name[1]);
                 $('#name3').html(u_name[2]);
+                $('#name4').html(u_name[0]);
+                $('#name5').html(u_name[1]);
+                $('#name6').html(u_name[2]);
 
 
 
@@ -272,16 +275,26 @@
 
 
             
-            $('#followPic1').html('<a href="search.html?id='+userid[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[0]+'/picture"/></a>');
+            $('#followPic1').html('<a href="personalprofile.html?id='+userid[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[0]+'/picture"/></a>');
             $('#info1').append(userinfo[0]);
             $('#rate1').append(userrate[0]);
             //$('#name1').html('src="https://graph.facebook.com/' + userid[0] + '?fields=name"');
-            $('#followPic2').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[1]+'/picture"/>');
+            $('#followPic2').html('<a href="personalprofile.html?id='+userid[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[1]+'/picture"/></a>');
             $('#info2').append(userinfo[1]);
             $('#rate2').append(userrate[1]);
-            $('#followPic3').html('<img class="pict img-rounded" src="http://graph.facebook.com/'+userid[2]+'/picture"/>');
+            $('#followPic3').html('<a href="personalprofile.html?id='+userid[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[2]+'/picture"/></a>');     
             $('#info3').append(userinfo[2]);
             $('#rate3').append(userrate[2]);
+
+             $('#followPic4').html('<a href="personalprofile.html?id='+userid[3]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[3]+'/picture"/></a>');
+            $('#info4').append(userinfo[3]);
+            $('#rate4').append(userrate[3]);
+             $('#followPic5').html('<a href="personalprofile.html?id='+userid[4]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[4]+'/picture"/></a>');
+            $('#info5').append(userinfo[4]);
+            $('#rate5').append(userrate[4]);
+             $('#followPic6').html('<a href="personalprofile.html?id='+userid[5]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+userid[5]+'/picture"/></a>');
+            $('#info6').append(userinfo[5]);
+            $('#rate6').append(userrate[5]);
              
           },
           error: function(error) {
@@ -564,6 +577,39 @@
       <span class="name" id="name3"></span><br>          
       <span class="rating" id="rate3"></span><span>&nbsp;STARS</span><br>
       <div class="description" id="info3"></div>
+    </div>  
+    </div><!-- /.profile -->
+
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic4" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name4"></span><br>          
+      <span class="rating" id="rate4"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info4"></div>
+    </div>  
+    </div><!-- /.profile -->
+
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic5" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name5"></span><br>          
+      <span class="rating" id="rate5"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info5"></div>
+    </div>  
+    </div><!-- /.profile -->
+
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic6" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name6"></span><br>          
+      <span class="rating" id="rate6"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info6"></div>
     </div>  
     </div><!-- /.profile -->
     
