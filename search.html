@@ -337,7 +337,10 @@
     }
 
   $(document).ready(function() {
-       
+        
+        getvalue("lang");
+        console.log('doing getvalue');       
+        
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
 
         window.fbAsyncInit = function() {
@@ -381,8 +384,7 @@
           }
         });
           // Run code after the Facebook SDK is loaded.
-        getvalue("lang");
-        console.log('doing getvalue');
+
        
         };
 
