@@ -308,6 +308,7 @@
         var date = [];
         var place = [];
         var same;
+        var j=0;
 
         invite_p.find({
           success:function(array2){
@@ -334,6 +335,10 @@
                 }
               }
             }
+
+            console.log(date[0]);
+            console.log(place[0]);
+            console.log(fromid[0]);
 
             $('#date1').append(date[0]);
 
