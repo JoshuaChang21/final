@@ -803,7 +803,7 @@
          var invite = Parse.Object.extend("invite") ;
          var invite_people = new invite();
          invite_people.set("place",place);
-         comment.save({
+         invite_people.save({
            success : function(savedParseObject){
            alert("留言成功");
            window.location.reload();
