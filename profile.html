@@ -361,16 +361,6 @@
               $('#place1').append('道南館');
             }
 
-
-          },
-
-          error: function(error) {
-              console.log(error) ;
-              alert(error.message);
-          }
-
-        });
-
           var name = Parse.Object.extend("name");
           var name_get = new Parse.Query(name);
           var y;
@@ -400,6 +390,18 @@
               }
               
             });
+
+
+          },
+
+          error: function(error) {
+              console.log(error) ;
+              alert(error.message);
+          }
+
+        });
+
+
 
 
         
