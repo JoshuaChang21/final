@@ -596,7 +596,7 @@
 <div class="wrapper">
   <ul class="tabs">
     <li class="active"><a href="#profile"><br>Profile</a></li>
-    <li><a href="#calendar"><br>calendar</a></li>
+    <li><a href="#invite"><br>invite</a></li>
     <li><a href="#follower"><span class="value" id="follower_count">0</span> <br><span class="label">Follower</span></a></li>
     <li><a href="#following"><span class="value" id="following_count">0</span> <br><span class="label">Following</a></li>
   </ul>
@@ -668,12 +668,45 @@
       </div>
     </article>
     
-    <article id="calendar">
-      <div class="profile_calendar">
-        <img src="calendar.jpg" class="calendar">
-        <p>Your Booked Time: <span class="label"> </span></p>
-        <span class="label"> 2014/05/01</span> <span class="label who"> Amy Hsu</span>
-        <span class="label place"> DA-REN Building.</span>
+    <article id="invite">
+      <div class="keyininvite">
+        
+        <label for="day">Please Chooese Time:</label>
+        <div id="invitedate">
+           <input type="date" id="day">
+        </div>
+
+        <label for="place">Please Choose Places:</label>
+        <div class="inviteplace row">
+          <div class="place col-md-4">
+          <p>Here Cafe</p><img src="herecafe.jpg" id="herecafe" class="img-circle" width="150" height="150">
+          </div>
+          <div class="place col-md-4">
+          <p>Arty</p><img src="arty.jpg" id="arty" class="img-circle" width="150" height="150">
+          </div>
+          <div class="place col-md-4">
+          <p>老薑咖啡</p><img src="old.jpg" id="old" class="img-circle" width="150" height="150">
+          </div>
+        </div>
+
+        <div class="inviteplace row">
+          <div class="place col-md-4">
+          <p>默沏</p><img src="silence.jpg" id="silence" class="img-circle" width="150" height="150">
+          </div>
+          <div class="place col-md-4">
+          <p>小公寓</p><img src="little.jpg" id="little" class="img-circle" width="150" height="150">
+          </div>
+          <div class="place col-md-4">
+          <p>道南館</p><img src="daonan.jpg" id="daonan" class="img-circle" width="150" height="150">
+          </div>
+        </div>
+
+       <form id="inviteSubmit" class="form-horizontal">
+          <div class="form-group">
+              <button id="place" class="btn btn-primary">送出</button>
+          </div>
+       </form>
+
       </div>
     </article>
     
@@ -692,16 +725,95 @@
 </body>
 
 <script>
-   $("#fancybox-manual-b").click(function() {
-        $.fancybox.open({
-          href : 'create.html',
-          type : 'iframe',
-          padding : 5
-        });
-        
-        setname();
-      });
+  var place;
 
+  here=document.getElementById("herecafe");
+  arty=document.getElementById("arty");
+  old=document.getElementById("old");
+  daonan=document.getElementById("daonan");
+  little=document.getElementById("little");
+  silence=document.getElementById("silence");
+
+   
+
+
+  $( "#herecafe" ).click(function() {
+   here.style.opacity = "0.5";
+   arty.style.opacity = "1";
+   old.style.opacity = "1";
+   daonan.style.opacity = "1";
+   little.style.opacity = "1";
+   silence.style.opacity = "1";
+   place = 0;
+   console.log(place);
+  });
+
+  $( "#arty" ).click(function() {
+   here.style.opacity = "1";
+   arty.style.opacity = "0.5";
+   old.style.opacity = "1";
+   daonan.style.opacity = "1";
+   little.style.opacity = "1";
+   silence.style.opacity = "1";
+   place = 1;
+  });
+
+  $( "#old" ).click(function() {
+   here.style.opacity = "1";
+   arty.style.opacity = "1";
+   old.style.opacity = "0.5";
+   daonan.style.opacity = "1";
+   little.style.opacity = "1";
+   silence.style.opacity = "1";
+   place = 2;
+  });
+
+  $( "#daonan" ).click(function() {
+   here.style.opacity = "1";
+   arty.style.opacity = "1";
+   old.style.opacity = "1";
+   daonan.style.opacity = "0.5";
+   little.style.opacity = "1";
+   silence.style.opacity = "1";
+   place = 3;
+  });
+
+  $( "#little" ).click(function() {
+   here.style.opacity = "1";
+   arty.style.opacity = "1";
+   old.style.opacity = "1";
+   daonan.style.opacity = "1";
+   little.style.opacity = "0.5";
+   silence.style.opacity = "1";
+   place = 4;
+  });
+
+  $( "#silence" ).click(function() {
+   here.style.opacity = "1";
+   arty.style.opacity = "1";
+   old.style.opacity = "1";
+   daonan.style.opacity = "1";
+   little.style.opacity = "1";
+   silence.style.opacity = "0.5";
+   place = 5;
+  });
+
+  $(document).on('click','#inviteSubmit',function(eventObject){
+         eventObject.preventDefault();
+         var invite = Parse.Object.extend("invite") ;
+         var invite_people = new invite();
+         invite_people.set("place",place);
+         comment.save({
+           success : function(savedParseObject){
+           alert("留言成功");
+           window.location.reload();
+           },
+           error : function (errorObject){
+             console.log(errorObject);
+             alert(errorObject.message);
+           }
+         });
+  });
 
 </script>
 </html>

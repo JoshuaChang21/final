@@ -146,9 +146,7 @@ article > div{
   border-bottom: black solid 1px;
 }
 
-.place{
-  border-bottom: black solid 1px;
-}
+
 
 .comment{
   padding-top: 10px 20px 10px 10px;
@@ -249,4 +247,29 @@ article > div{
   font-family:monospace;
   color:red;
   margin:10px 10px;
+}
+
+.place > p{
+  text-align: center;
+  font-family: monospace;
+  font-size: 20px;  
+}
+
+.place > img{
+  margin-left: 25px;
+}
+
+.inviteplace {
+  margin-bottom:60px;
+  margin-top: 10px;
+}
+
+.keyininvite > label{
+  margin:15px 149px;
+  font-size:30px;
+}
+
+#day{
+  margin: 20px 0px;
+  margin-left: 225px;
 }
