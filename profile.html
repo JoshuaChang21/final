@@ -304,15 +304,16 @@
         var invite = Parse.Object.extend("invite") ;
         var invite_p = new Parse.Query(invite);
 
-        var fromid = [];
-        var date = [];
-        var place = [];
-        var same;
-        var j=0;
+        
 
         invite_p.find({
           success:function(array2){
             var array2_length = array2.length;
+            var fromid = [];
+            var date = [];
+            var place = [];
+            var same;
+            var j=0;
 
             for(var i=array2_length-1;i>=0;i--){
               same= false;
@@ -320,7 +321,7 @@
               var f_id = array2[i].get('to_id');
               
               for(var k=0; k<j;k++){
-                if(array2[i].get('fb_id')== fromid[k]){
+                if(array2[i].get('my_id')== fromid[k]){
                   same = true;
                   console.log('same occures');
                 }
