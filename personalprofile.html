@@ -799,9 +799,10 @@
    place = 5;
   });
 
+  
   $(document).on('click','#inviteSubmit',function(eventObject){
          eventObject.preventDefault();
-         var x = date.value();
+         var x = date.value;
          alert(x);
 
          var invite = Parse.Object.extend("invite") ;
