@@ -299,6 +299,104 @@
         console.log(username);
 
         });
+
+
+        var invite = Parse.Object.extend("invite") ;
+        var invitete_p = new Parse.Query(invite);
+
+        var fromid = [];
+        var date = [];
+        var place = [];
+        var same;
+
+        invite_p.find({
+          success:function(array2){
+            var array2_length = array2.length;
+
+            for(var i=array2_length-1;i>=0;i--){
+              same= false;
+              
+              var f_id = array2[i].get('to_id');
+              
+              for(var k=0; k<j;k++){
+                if(array1[i].get('fb_id')== fromid[k]){
+                  same = true;
+                }
+              }
+
+              if(same == false){
+                if(userid == f_id){
+                  console.log('to me');
+                   fromid[j] = array2[i].get('my_id');
+                   date[j] = array2[i].get('date');
+                   place[j] = array2[i].get('place');
+                   j++;
+                }
+              }
+            }
+
+            $('#date1').append(date[0]);
+
+            if(place[0]== 1){
+              $('#place1').append('Here Cafe');
+            }
+            if(place[0]==2){
+              $('#place1').append('Arty');
+            }
+            if(place[0]==3){
+              $('#place1').append('老薑咖啡');
+            }
+            if(place[0]==4){
+              $('#place1').append('默沏');
+            }
+            if(place[0]==5){
+              $('#place1').append('小公寓');
+            }
+            if(place[0]==6){
+              $('#place1').append('道南館');
+            }
+
+
+          },
+
+          error: function(error) {
+              console.log(error) ;
+              alert(error.message);
+          }
+
+        });
+
+          var name = Parse.Object.extend("name");
+          var name_get = new Parse.Query(name);
+          var y;
+          var u_name = [];
+            
+            name_get.find({
+              success:function(array2){
+                var array2_length = array2.length;
+                console.log(array2_length);
+                for(var x=0;x<j;x++){
+                  for(y=array2_length-1;y>=0;y--){
+                    console.log(array2[y].get('userid'));
+
+                    if(from_id[x] == array2[y].get('userid')){
+                      console.log('123');
+                      from_name[x] = array2[y].get('username');
+
+                    }
+
+                  }
+                }
+                $('#name1').append(from_name[0]); 
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              }
+              
+            });
+
+
         
 
         var personalinfo = Parse.Object.extend("personalinfo"); 
@@ -371,78 +469,17 @@
             $('#star').append(starnum);
             $('#prefer').append(pref);
             $('#more_inform').append(inform_after);
-
-
           },
 
           error: function(error) {
               console.log(error) ;
               alert(error.message);
-            }
+          }
           });
           
 
         }
-
-/*
-      var f;
-      var j;
-      var s;
-      var starnum;
-      var inform_after;
-
-      $(document).ready(function(){
-        var personalinfo = Parse.Object.extend("personalinfo"); 
-        var info_p = new Parse.Query(personalinfo);
-
-        info_p.find({
-          success: function(response) {
-              console.log(response);
-
-
-              var response_length = response.length;
-
-              var facebookid = response[3].get('fb_id');
-              var star = response[3].get('star');
-
-              
-              
-              console.log(userid);
-              console.log(star);
-              /*for(var i=0; i<response_length; i++){
-                var facebookid= response[i].get('fb_id');
-                if( id == userid) {
-                   f=response[i].get('frence');
-                   j=response[i].get('japan');
-                   s=response[i].get('spain');
-                   starnum=response[i].get('star');
-                   inform_after =response[i].get('information');
-                    
-                   console.log("French is" + f);
-                   console.log("spainish is" + s);
-                   i=response_length;
-                }
-              }
-
-
-          },
-          error: function(error) {
-              console.log(error) ;
-              alert(error.message);
-            }
-          });
-
-        if(f==true){
-          $('#language').append("FRENCH");
-        }
-
-        if(s==true){
-          $('#language').append("SPAINISH");
-        }
-
-      });
-*/
-      
+     
     </script>
 
 
@@ -627,8 +664,8 @@
       <div class="profile_calendar">
         <img src="calendar.jpg" class="calendar">
         <p>Your Booked Time: <span class="label"> </span></p>
-        <span class="label"> 2014/05/01</span> <span class="label who"> Amy Hsu</span>
-        <span class="label place"> DA-REN Building.</span>
+        <span class="label" id="date1"></span> <span class="label who" id="name1"></span>
+        <span class="label place" id="place1"></span>
       </div>
     </article>
     
