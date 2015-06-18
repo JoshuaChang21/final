@@ -417,6 +417,7 @@
     
         function getvalue(varname){
             
+            window.location.reload();
             var url = window.location.href;
             var qparts = url.split("?");
             var query  = qparts[1];
@@ -432,7 +433,7 @@
 
         $(document).ready(function() {
         
-        window.location.reload();
+
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
 
         window.fbAsyncInit = function() {
