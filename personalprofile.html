@@ -430,7 +430,10 @@
         }
 
         $(document).ready(function() {
-        
+         
+        getvalue("id");
+        console.log('doing getvalue');
+         
 
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
 
@@ -475,9 +478,7 @@
           }
         });
           // Run code after the Facebook SDK is loaded.
-        getvalue("id");
-        console.log('doing getvalue');
-       
+
         };
 
         (function(d, s, id){
