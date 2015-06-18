@@ -413,12 +413,16 @@
                     if(fromid[x] == array2[y].get('userid')){
                       from_name[x] = array2[y].get('username');
 
-                    }
+                      console.log(fromid[x]);
+                      console.log(from_name[x]);
+                      console.log(x);
 
+                    }
                   }
                 }
+
                 $('#name1').append(from_name[0]); 
-                $('#name2').append(from_name[2]);
+                $('#name2').append(from_name[1]);
                 $('#name3').append(from_name[2]);
               },
               error: function(error) {
