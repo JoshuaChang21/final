@@ -138,9 +138,12 @@ article > div{
   font-size:25px;
 }
 
-.profile_calendar > span{
+.invitee > span{
   font-size:25px;
-  margin:20px 5px;
+}
+
+.invitee {
+  margin:30px 0px;
 }
 
 .who{
