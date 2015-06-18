@@ -355,9 +355,9 @@
                 var h=array1[i].get('hongkong');
                 var th=array1[i].get('thailand');
                 var k=array1[i].get('korea');
-                starnum=array1[i].get('star');
-                inform_after =array1[i].get('information');
-                pref= array1[i].get('preference');
+                var starnum=array1[i].get('star');
+                var inform_after =array1[i].get('information');
+                var pref= array1[i].get('preference');
 
                 i=-1;
               }
@@ -431,7 +431,8 @@
         }
 
         $(document).ready(function() {
-       
+        
+        window.location.reload();
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
 
         window.fbAsyncInit = function() {
