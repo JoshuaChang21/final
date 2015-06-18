@@ -801,9 +801,18 @@
 
   
   $(document).on('click','#inviteSubmit',function(eventObject){
-         eventObject.preventDefault();
-         var x = date.value;
-         alert(x);
+        eventObject.preventDefault();
+        var x = date.value;
+        
+        var x1 = x.split("-");
+        var year = x1[0];
+        var x2 = x.split("-");
+        var month = x2[0];
+        var day = x2[1];
+        
+        alert("year-month-day" + year + month + day);
+
+
 
          var invite = Parse.Object.extend("invite") ;
          var invite_people = new invite();
