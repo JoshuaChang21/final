@@ -809,13 +809,20 @@
         var month = x1[1];
         var day = x1[2];
         
-        alert("year-month-day" + year + month + day);
-
 
 
          var invite = Parse.Object.extend("invite") ;
          var invite_people = new invite();
+         
          invite_people.set("place",place);
+         invite_people.set("year",year);
+         invite_people.set("month",month);
+         invite_people.set("day",day);
+         invite_people.set("date",x);
+         invite_people.set("to_id",value);
+         invite_people.set("my_id",userid);
+
+
          invite_people.save({
            success : function(savedParseObject){
            alert("留言成功");
