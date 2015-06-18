@@ -728,31 +728,6 @@
   var place;
   var date = document.getElementById("day");
 
-
-
-  function setInputDate(_id){
-    var _dat = document.querySelector(_id);
-    var hoy = new Date(),
-        d = hoy.getDate(),
-        m = hoy.getMonth()+1, 
-        y = hoy.getFullYear(),
-        data;
-
-    if(d < 10){
-        d = "0"+d;
-    };
-    if(m < 10){
-        m = "0"+m;
-    };
-
-    data = y+"-"+m+"-"+d;
-    alert(data);
-    _dat.value = data;
-};
-
-
-
-
   var here=document.getElementById("herecafe");
   var arty=document.getElementById("arty");
   var old=document.getElementById("old");
@@ -826,7 +801,9 @@
 
   $(document).on('click','#inviteSubmit',function(eventObject){
          eventObject.preventDefault();
-         setInputDate("#day");
+         var x = date.value();
+         alert(x);
+
          var invite = Parse.Object.extend("invite") ;
          var invite_people = new invite();
          invite_people.set("place",place);
