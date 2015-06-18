@@ -703,7 +703,7 @@
 
        <form id="inviteSubmit" class="form-horizontal">
           <div class="form-group">
-              <button id="place" class="btn btn-primary">送出</button>
+              <button id="place" class="btn btn-primary">Invite</button>
           </div>
        </form>
 
@@ -726,13 +726,39 @@
 
 <script>
   var place;
+  var date = document.getElementById("day");
 
-  here=document.getElementById("herecafe");
-  arty=document.getElementById("arty");
-  old=document.getElementById("old");
-  daonan=document.getElementById("daonan");
-  little=document.getElementById("little");
-  silence=document.getElementById("silence");
+
+
+  function setInputDate(_id){
+    var _dat = document.querySelector(_id);
+    var hoy = new Date(),
+        d = hoy.getDate(),
+        m = hoy.getMonth()+1, 
+        y = hoy.getFullYear(),
+        data;
+
+    if(d < 10){
+        d = "0"+d;
+    };
+    if(m < 10){
+        m = "0"+m;
+    };
+
+    data = y+"-"+m+"-"+d;
+    console.log(data);
+    _dat.value = data;
+};
+
+
+
+
+  var here=document.getElementById("herecafe");
+  var arty=document.getElementById("arty");
+  var old=document.getElementById("old");
+  var daonan=document.getElementById("daonan");
+  var little=document.getElementById("little");
+  var silence=document.getElementById("silence");
 
    
 
@@ -800,13 +826,14 @@
 
   $(document).on('click','#inviteSubmit',function(eventObject){
          eventObject.preventDefault();
+         setInputDate("#day");
          var invite = Parse.Object.extend("invite") ;
          var invite_people = new invite();
          invite_people.set("place",place);
          invite_people.save({
            success : function(savedParseObject){
            alert("留言成功");
-           window.location.reload();
+            window.location.reload();
            },
            error : function (errorObject){
              console.log(errorObject);
