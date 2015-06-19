@@ -274,16 +274,27 @@
 
 
                   for (var y=1;y<=z;y++){
-                  $('.contain1').append('<div class="profile col-xs-4 col-sm-4 col-md-4">    
-                      <div style="position:relative">
-                        <div id="followPic'+y+'" class="pic"></div>
-                      </div>  
-                      <div class="profileInfo">
-                        <span class="name" id="name'+y+'"></span><br>          
-                        <span class="rating" id="info'+y+'"></span><span>&nbsp;STARS</span><br>
-                        <div class="description" id="rate'+y+'"></div>
-                      </div>  
-                    </div>');
+
+                    var content = '<div class=\"profile col-md-4\"><div style=\"position:relative\"><div id=\"followpic'+y+'\" class=\"pic\"></div></div></div>';
+                    $('.contain1').append(content);
+                  }
+
+
+
+
+
+                  // $('.contain1').append('<div class="profile col-xs-4 col-sm-4 col-md-4">    
+                  //     <div style="position:relative">
+                  //       <div id="followPic'+y+'" class="pic"></div>
+                  //     </div>  
+                  //     <div class="profileInfo">
+                  //       <span class="name" id="name'+y+'"></span><br>          
+                  //       <span class="rating" id="info'+y+'"></span><span>&nbsp;STARS</span><br>
+                  //       <div class="description" id="rate'+y+'"></div>
+                  //     </div>  
+                  //   </div>');
+                  //                     var content = '<div class=\"item\" id=\"' + object.id + '\" data-toggle=\"modal\" data-target=\"#myModal\"><img src=\"' + object.get('img') + '\"><h4>' + object.get('Name') + '</h4><p><i class=\"fa fa-map-marker\"></i>' + object.get('Place') + '</br><i class=\"fa fa-calendar\"></i>' + sdate.getFullYear().toString() + '/' + (sdate.getMonth() + 1).toString() + '/' + sdate.getDate().toString() + '~' + edate.getFullYear().toString() + '/' + (edate.getMonth() + 1).toString() + '/' + edate.getDate().toString() + '</br><i class=\"fa fa-thumbs-o-up\"></i> 55309</br></p></div>';
+
 
 
                 $('#followPic1').html('<a href="personalprofile.html?id='+u_id[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[0]+'/picture"/></a>');
