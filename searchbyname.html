@@ -202,8 +202,10 @@
 
         var name = Parse.Object.extend("name"); 
         var info_p = new Parse.Query(name);
-
-        info_p.find({
+         
+         info_p.matches('username',".*"+value+".*");
+         
+         info_p.find({
 
           success:function(array1){
             console.log(array1);
@@ -217,16 +219,16 @@
             var same;
             var k;
 
-            for(var i=array_length-1;i>=0;i--){
-              if(array1[i].get('username') == value){
-                u_name[j] = array1[i].get('username');
-                u_id[j] = array1[i].get('userid');
-                j++;
+            // for(var i=array_length-1;i>=0;i--){
+            //   if(array1[i].get('username') == value){
+            //     u_name[j] = array1[i].get('username');
+            //     u_id[j] = array1[i].get('userid');
+            //     j++;
 
-                console.log('name'+u_name[j]);
-                console.log('id'+u_id[j]);
-              }
-            }
+            //     console.log('name'+u_name[j]);
+            //     console.log('id'+u_id[j]);
+            //   }
+            // }
 
 
 
