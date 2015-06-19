@@ -203,7 +203,7 @@
         var name = Parse.Object.extend("name"); 
         var info_p = new Parse.Query(name);
          
-         info_p.matches('username',".*"+value+".*");
+        info_p.matches('username',".*"+value+".*");
         var u_id = [];
         var u_name = [];
         var userrate = [];
@@ -244,10 +244,49 @@
             console.log(j2);
 
 
-            for(var k=0;k<j2;k++){
-              console.log('name'+u_name[k]);
-              console.log('id' + u_id[k]);
-            }
+
+              var personalinfo = Parse.Object.extend("personalinfo"); 
+              var per_p =  new Parse.Query(name);
+
+              var star=[];
+              var info = [];
+              per_p.find({
+                success:function(array2){
+                  array2_length = array2.length;
+
+                  for(k=0;k<j2;k++){
+                    for(var i= array2_length-1; i>= 0;i--){
+                        if(array2[i].get('fb_id') == u_id[k]){
+                            star[z] = array2[i].get('star');
+                            info[z] = array2[i].get('information');
+                            z++;
+                            i=0;
+                        }
+                    }
+                  }
+
+
+                $('#followPic1').html('<a href="personalprofile.html?id='+u_id[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[0]+'/picture"/></a>');
+                $('#info1').append(info[0]);
+                $('#rate1').append(star[0]);
+
+                $('#followPic2').html('<a href="personalprofile.html?id='+u_id[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[1]+'/picture"/></a>');
+                $('#info2').append(info[1]);
+                $('#rate2').append(star[1]);
+                $('#followPic3').html('<a href="personalprofile.html?id='+u_id[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[2]+'/picture"/></a>');     
+                $('#info3').append(info[2]);
+                $('#rate3').append(star[2]);
+
+
+
+
+                },
+                error:function(error) {
+                  console.log(error) ;
+                  alert(error.message);
+                }
+              });
+            
 
 
           },
