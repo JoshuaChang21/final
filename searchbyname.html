@@ -200,10 +200,11 @@
         });
 
 
-        var personalinfo = Parse.Object.extend("personalinfo"); 
-        var info_p = new Parse.Query(personalinfo);
+        var name = Parse.Object.extend("name"); 
+        var info_p = new Parse.Query(name);
 
         info_p.find({
+
           success:function(array1){
             console.log(array1);
             var j=0;
@@ -211,111 +212,124 @@
             var array_length = array1.length;
             
             var u_id = [];
-             
+            var u_name = [];
             var userrate = [];
             var same;
             var k;
 
-            for(var i=array_length-1; i>=0 ;i--){
-              same= false;
+            for(var i=array_length-1;i>=0;i--){
+              if(array1[i].get('username') == value){
+                u_name[j] = array1[i].get('username');
+                u_id[j] = array1[i].get('userid');
+                j++;
 
-                 if(array1[i].get(value) == true){
-                  console.log('i is'+ i);
+                console.log('name'+u_name[j]);
+                console.log('id'+u_id[j]);
+              }
+            }
 
-                 for(var k=0; k<j;k++){
-                    if(array1[i].get('fb_id')== u_id[k]){
-                      same = true;
-                    }
-                  }  
+
+
+            // for(var i=array_length-1; i>=0 ;i--){
+            //   same= false;
+
+            //      if(array1[i].get(value) == true){
+            //       console.log('i is'+ i);
+
+            //      for(var k=0; k<j;k++){
+            //         if(array1[i].get('fb_id')== u_id[k]){
+            //           same = true;
+            //         }
+            //       }  
                   
-                  if(same == false){
-                    //console.log('getid' + array1[i].get('fb_id') );
-                    //console.log('userid is' + userid);
+            //       if(same == false){
+            //         //console.log('getid' + array1[i].get('fb_id') );
+            //         //console.log('userid is' + userid);
 
-                    if(array1[i].get('fb_id') == userid){
-                    //  console.log('is urself');
-                    }
-                    else {
-                    //console.log('not same');
-                    u_id[j]= array1[i].get('fb_id');
-                    userinfo[j] = array1[i].get('information');
-                    userrate[j]= array1[i].get('star');
-                    //console.log('facebookid is ' + u_id[j]);
-                    j++; 
-                    }
-                  }        
-                }
+            //         if(array1[i].get('fb_id') == userid){
+            //         //  console.log('is urself');
+            //         }
+            //         else {
+            //         //console.log('not same');
+            //         u_id[j]= array1[i].get('fb_id');
+            //         userinfo[j] = array1[i].get('information');
+            //         userrate[j]= array1[i].get('star');
+            //         //console.log('facebookid is ' + u_id[j]);
+            //         j++; 
+            //         }
+            //       }        
+            //     }
                        
-            } 
+            // } 
 
-          var name = Parse.Object.extend("name");
-          var name_get = new Parse.Query(name);
-          var y;
-          var u_name = [];
+          // var name = Parse.Object.extend("name");
+          // var name_get = new Parse.Query(name);
+          // var y;
+          // var u_name = [];
             
-            name_get.find({
-              success:function(array2){
-                var array2_length = array2.length;
-                console.log(array2_length);
-                for(var x=0;x<j;x++){
-                  for(y=array2_length-1;y>=0;y--){
-                    console.log(array2[y].get('userid'));
+          //   name_get.find({
+          //     success:function(array2){
+          //       var array2_length = array2.length;
+          //       console.log(array2_length);
+          //       for(var x=0;x<j;x++){
+          //         for(y=array2_length-1;y>=0;y--){
+          //           console.log(array2[y].get('userid'));
 
-                    if(u_id[x] == array2[y].get('userid')){
-                      console.log('123');
-                      u_name[x] = array2[y].get('username');
+          //           if(u_id[x] == array2[y].get('userid')){
+          //             console.log('123');
+          //             u_name[x] = array2[y].get('username');
 
-                    }
+          //           }
 
-                  }
-                }
-                $('#name1').html(u_name[0]);
-                $('#name2').html(u_name[1]);
-                $('#name3').html(u_name[2]);
-                $('#name4').html(u_name[3]);
-                $('#name5').html(u_name[4]);
-                $('#name6').html(u_name[5]);
+          //         }
+          //       }
+          //       $('#name1').html(u_name[0]);
+          //       $('#name2').html(u_name[1]);
+          //       $('#name3').html(u_name[2]);
+          //       $('#name4').html(u_name[3]);
+          //       $('#name5').html(u_name[4]);
+          //       $('#name6').html(u_name[5]);
 
 
 
                    
-              },
-              error: function(error) {
-                console.log(error) ;
-                alert(error.message);
-              }
+          //     },
+          //     error: function(error) {
+          //       console.log(error) ;
+          //       alert(error.message);
+          //     }
               
-            });
+          //   });
 
 
             
-            $('#followPic1').html('<a href="personalprofile.html?id='+u_id[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[0]+'/picture"/></a>');
-            $('#info1').append(userinfo[0]);
-            $('#rate1').append(userrate[0]);
-            //$('#name1').html('src="https://graph.facebook.com/' + userid[0] + '?fields=name"');
-            $('#followPic2').html('<a href="personalprofile.html?id='+u_id[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[1]+'/picture"/></a>');
-            $('#info2').append(userinfo[1]);
-            $('#rate2').append(userrate[1]);
-            $('#followPic3').html('<a href="personalprofile.html?id='+u_id[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[2]+'/picture"/></a>');     
-            $('#info3').append(userinfo[2]);
-            $('#rate3').append(userrate[2]);
+            // $('#followPic1').html('<a href="personalprofile.html?id='+u_id[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[0]+'/picture"/></a>');
+            // $('#info1').append(userinfo[0]);
+            // $('#rate1').append(userrate[0]);
+            // //$('#name1').html('src="https://graph.facebook.com/' + userid[0] + '?fields=name"');
+            // $('#followPic2').html('<a href="personalprofile.html?id='+u_id[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[1]+'/picture"/></a>');
+            // $('#info2').append(userinfo[1]);
+            // $('#rate2').append(userrate[1]);
+            // $('#followPic3').html('<a href="personalprofile.html?id='+u_id[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[2]+'/picture"/></a>');     
+            // $('#info3').append(userinfo[2]);
+            // $('#rate3').append(userrate[2]);
 
-             $('#followPic4').html('<a href="personalprofile.html?id='+u_id[3]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[3]+'/picture"/></a>');
-            $('#info4').append(userinfo[3]);
-            $('#rate4').append(userrate[3]);
-             $('#followPic5').html('<a href="personalprofile.html?id='+u_id[4]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[4]+'/picture"/></a>');
-            $('#info5').append(userinfo[4]);
-            $('#rate5').append(userrate[4]);
-             $('#followPic6').html('<a href="personalprofile.html?id='+u_id[5]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[5]+'/picture"/></a>');
-            $('#info6').append(userinfo[5]);
-            $('#rate6').append(userrate[5]);
+            //  $('#followPic4').html('<a href="personalprofile.html?id='+u_id[3]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[3]+'/picture"/></a>');
+            // $('#info4').append(userinfo[3]);
+            // $('#rate4').append(userrate[3]);
+            //  $('#followPic5').html('<a href="personalprofile.html?id='+u_id[4]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[4]+'/picture"/></a>');
+            // $('#info5').append(userinfo[4]);
+            // $('#rate5').append(userrate[4]);
+            //  $('#followPic6').html('<a href="personalprofile.html?id='+u_id[5]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[5]+'/picture"/></a>');
+            // $('#info6').append(userinfo[5]);
+            // $('#rate6').append(userrate[5]);
              
           },
           error: function(error) {
               console.log(error) ;
               alert(error.message);
-            }
-          });
+          }
+        });
 
          
         }
@@ -323,7 +337,7 @@
     var value;
     
     function getvalue(varname){
-      
+
         var url = window.location.href;
         var qparts = url.split("?");
         var query  = qparts[1];
@@ -339,7 +353,7 @@
 
   $(document).ready(function() {
         
-        getvalue("lang");
+        getvalue("text");
         console.log('doing getvalue');       
         
         Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
