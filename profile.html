@@ -312,20 +312,38 @@
             var fromid = [];
             var date = [];
             var place = [];
+            var toid = [];
+            var date2 = [];
+            var place2 = [];
+
             var same;
+            var same2;
             var j=0;
+            var j2=0;
+            var toid = [];
 
             for(var i=array2_length-1;i>=0;i--){
               same= false;
+              same2 = false;
               
               var f_id = array2[i].get('to_id');
-              
+              var t_id = array2[i].get('my_id');
+
               for(var k=0; k<j;k++){
                 if(array2[i].get('my_id')== fromid[k]){
                   same = true;
                   console.log('same occures');
                 }
               }
+
+
+              for(var k1=0;k1<j2;k1++){
+                if(array2[i].get('to_id')== toid[k]){
+                  same2 = true;
+                  console.log('same1 occures');
+                }
+              }
+
 
               if(same == false){
                 if(userid == f_id){
@@ -336,11 +354,25 @@
                    j++;
                 }
               }
+
+
+              if(same2 == false){
+                if(userid == t_id){
+                   console.log('from me');
+                   toid[j2] = array2[i].get('to_id');
+                   date2[j2] = array2[i].get('date');
+                   place2[j2] = array2[i].get('place');
+                   j2++;
+                }
+              }
             }
 
             $('#date1').append(date[0]);
             $('#date2').append(date[1]);
             $('#date3').append(date[2]);
+            $('#d1').append(date2[0]);
+            $('#d2').append(date2[1]);
+            $('#d3').append(date2[2]);
 
             if(place[0]== 1){
               $('#place1').append('Here Cafe');
@@ -399,6 +431,65 @@
               $('#place3').append('道南館');
             }
 
+
+            if(place2[0]== 1){
+              $('#p1').append('Here Cafe');
+            }
+            if(place2[0]==2){
+              $('#p1').append('Arty');
+            }
+            if(place2[0]==3){
+              $('#p1').append('老薑咖啡');
+            }
+            if(place2[0]==4){
+              $('#p1').append('默沏');
+            }
+            if(place2[0]==5){
+              $('#p1').append('小公寓');
+            }
+            if(place2[0]==6){
+              $('#p1').append('道南館');
+            }
+
+            if(place2[1]== 1){
+              $('#p2').append('Here Cafe');
+            }
+            if(place2[1]==2){
+              $('#p2').append('Arty');
+            }
+            if(place2[1]==3){
+              $('#p2').append('老薑咖啡');
+            }
+            if(place2[1]==4){
+              $('#p2').append('默沏');
+            }
+            if(place2[1]==5){
+              $('#p2').append('小公寓');
+            }
+            if(place2[1]==6){
+              $('#p2').append('道南館');
+            }
+
+            if(place2[2]== 1){
+              $('#p3').append('Here Cafe');
+            }
+            if(place2[2]==2){
+              $('#p3').append('Arty');
+            }
+            if(place2[2]==3){
+              $('#p3').append('老薑咖啡');
+            }
+            if(place2[2]==4){
+              $('#p3').append('默沏');
+            }
+            if(place2[2]==5){
+              $('#p3').append('小公寓');
+            }
+            if(place2[2]==6){
+              $('#p3').append('道南館');
+            }
+
+
           var name = Parse.Object.extend("name");
           var name_get = new Parse.Query(name);
           var y;
@@ -410,15 +501,13 @@
                 console.log(array2_length);
                 for(var x=0;x<j;x++){
                   for(y=array2_length-1;y>=0;y--){
-                    console.log(array2[y].get('userid'));
 
                     if(fromid[x] == array2[y].get('userid')){
                       from_name[x] = array2[y].get('username');
+                    }
 
-                      console.log(fromid[x]);
-                      console.log(from_name[x]);
-                      console.log(x);
-
+                    if(toid[x] == array2[y].get('userid')){
+                      toname[x]= array2[y].get('username');
                     }
                   }
                 }
@@ -426,6 +515,10 @@
                 $('#name1').append(from_name[0]); 
                 $('#name2').append(from_name[1]);
                 $('#name3').append(from_name[2]);
+
+                $('#n1').append(toname[0]); 
+                $('#n2').append(toname[1]);
+                $('#n3').append(toname[2]);
               },
               error: function(error) {
                 console.log(error) ;
@@ -732,6 +825,28 @@
         <span class="label" id="date3"></span> 
         <span class="label place" id="place3"></span>
         <span class="label who" id="name3"></span>
+        </div>
+      </div>
+
+      <div class="profile_calendar">
+        <div class="invitee">
+        <span class="label" id="d1"></span>
+        <span class="label place" id="p1"></span>
+        <span class="label who" id="n1"></span>
+        </div>
+
+        <div class="invitee">
+        <span class="label"> </span></p>
+        <span class="label" id="d2"></span>
+        <span class="label place" id="p2"></span>
+        <span class="label who" id="n2"></span>
+        </div>
+
+        <div class="invitee">
+        <span class="label"> </span></p>
+        <span class="label" id="d3"></span> 
+        <span class="label place" id="p3"></span>
+        <span class="label who" id="n3"></span>
         </div>
       </div>
     </article>
