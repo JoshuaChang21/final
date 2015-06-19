@@ -225,17 +225,17 @@
             var j2=0;
             for(var i=array_length-1;i>=0;i--){
 
-              // for(var k=0;k<j;k++){
-              //   if(u_id[k] == array1[i].get('userid')) {
-              //     same = true;
-              //   }
-              // }
+              for(var k=0;k<j;k++){
+                if(u_id[k] == array1[i].get('userid')) {
+                  same = true;
+                }
+              }
 
-              // if(same = false){
+              if(same = false){
               u_name[j2] = array1[i].get('username');
               u_id[j2] = array1[i].get('userid');
               j2++;
-              // }
+              }
             }
 
             console.log(j2);
