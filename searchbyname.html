@@ -223,20 +223,21 @@
             alert(array_length);
 
             var j2=0;
-            var same=true;
+            var same=false;
             
             for(var i=array_length-1;i>=0;i--){
 
-              if(same == false){
-              u_name[j2] = array1[i].get('username');
-              u_id[j2] = array1[i].get('userid');
-              j2++;
-              }
+              
 
               for(var k=0;k<j2;k++){
                 if(u_id[k] == array1[i].get('userid')) {
                   same = true;
                 }
+              }
+              if(same == false){
+              u_name[j2] = array1[i].get('username');
+              u_id[j2] = array1[i].get('userid');
+              j2++;
               }              
             }
 
