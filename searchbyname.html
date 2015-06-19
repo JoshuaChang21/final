@@ -220,7 +220,7 @@
             }
 
             var array_length= array1.length;
-            alert(array_length);
+            
 
             var j2=0;
             var same=false;
@@ -277,12 +277,17 @@
                 $('#info1').append(info[0]);
                 $('#rate1').append(star[0]);
 
-                // $('#followPic2').html('<a href="personalprofile.html?id='+u_id[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[1]+'/picture"/></a>');
-                // $('#info2').append(info[1]);
-                // $('#rate2').append(star[1]);
-                // $('#followPic3').html('<a href="personalprofile.html?id='+u_id[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[2]+'/picture"/></a>');     
-                // $('#info3').append(info[2]);
-                // $('#rate3').append(star[2]);
+                if(z>=1){
+                $('#followPic2').html('<a href="personalprofile.html?id='+u_id[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[1]+'/picture"/></a>');
+                $('#info2').append(info[1]);
+                $('#rate2').append(star[1]);
+                }
+
+                if(z>=2){
+                $('#followPic3').html('<a href="personalprofile.html?id='+u_id[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[2]+'/picture"/></a>');     
+                $('#info3').append(info[2]);
+                $('#rate3').append(star[2]);
+                }
 
 
 
