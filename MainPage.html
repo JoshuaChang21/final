@@ -193,17 +193,28 @@
 
 
       
-        $('#searchbar').on('click',function(){
-        console.log('haha');
-        var text = document.getElementById('searchtext');
-        var textvalue = text.value();
+      //   $('#searchbar').on('click',function(){
+      //   console.log('haha');
+      //   var text = document.getElementById('searchtext');
+      //   var textvalue = text.value();
 
-        var locat = 'searchbyname.html?';
-        locat.append(textvalue);
+      //   var locat = 'searchbyname.html?';
+      //   locat.append(textvalue);
 
-        alert(locat);
-      });
+      //   alert(locat);
+      // });
      
+        function EasySearch(event){
+          event.preventDefault();
+          // var Exhibition = Parse.Object.extend("Exhibition");
+          // var query = new Parse.Query(Exhibition);
+          var key=$('#easysearch').val();
+          key=decodeURI(key);
+          console.log(key);
+          var link = 'searchbyname.html?text='+key;
+          window.location = link;
+
+        }
 
 
 
@@ -267,10 +278,11 @@
                 <li>
             <form class="navbar-form" role="search">
 		           <div class="form-group">
-		              <input type="text" class="form-control" placeholder="Search" id="searchtext">
+		              <input type="text" class="form-control" placeholder="Search" id="easysearch">
 		           </div>
 
-		           <i class="fa fa-search"  id="searchbar"></i>
+		           <button onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton">Search</button>
+
 		        </form>
                 </li>
               </ul>
