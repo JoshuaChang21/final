@@ -240,13 +240,6 @@
               j2++;
               }              
             }
-
-            console.log(j2);
-
-            
-
-
-
               var personalinfo = Parse.Object.extend("personalinfo"); 
               var per_p =  new Parse.Query(personalinfo);
 
@@ -256,12 +249,9 @@
                 success:function(array2){
                   array2_length = array2.length;
                   var z=0;
-                  console.log(array2_length);
 
                   for(k=0;k<j2;k++){
                     for(var i= array2_length-1; i>= 0;i--){
-                        console.log(u_id[k]);
-                        console.log(array2[i].get('fb_id'));
 
                         if(array2[i].get('fb_id') == u_id[k]){
                             star[z] = array2[i].get('star');
@@ -276,6 +266,7 @@
                   for (var y=1;y<=z;y++){
 
                     var content = '<div class=\"profile col-md-4\"><div style=\"position:relative\"><div id=\"followpic'+y+'\" class=\"pic\"></div></div></div>';
+                    alert(content);
                     $('.contain1').append(content);
                   }
 
