@@ -204,23 +204,57 @@
         var info_p = new Parse.Query(name);
          
          info_p.matches('username',".*"+value+".*");
-         
+        var u_id = [];
+        var u_name = [];
+        var userrate = [];
+        var same=true;
+        var j;
          info_p.find({
 
           success:function(array1){
-            console.log(array1);
+            console.log(array1);  
             if(array1.length == 0){
               alert('no matches information');
+              return;
             }
-            var j=0;
+
+            var array_length= array1.length;
+
+            for(var i=array_length-1;i>=0;i--){
+
+              for(var k=0;k<j;k++){
+                if(u_id[k] == array1[i].get('userid')){
+                  same = true;
+                }
+              }
+
+              if(same = false){}
+              u_name[j] = array1[i].get('username');
+              u_id[j] = array1[i].get('userid');
+              j++;
+            }
+
+            for(var k=0;k<j;k++){
+              console.log('name'+u_name[k]);
+              console.log('id' + u_id[k]);
+            }
+
+
+          },
+          error: function(error) {
+              console.log(error) ;
+              alert(error.message);
+          }
+        });
+
+         
+
+
+            
             var userinfo = [];
             var array_length = array1.length;
             
-            var u_id = [];
-            var u_name = [];
-            var userrate = [];
-            var same;
-            var k;
+            
 
             // for(var i=array_length-1;i>=0;i--){
             //   if(array1[i].get('username') == value){
@@ -329,14 +363,8 @@
             // $('#info6').append(userinfo[5]);
             // $('#rate6').append(userrate[5]);
              
-          },
-          error: function(error) {
-              console.log(error) ;
-              alert(error.message);
-          }
-        });
-
-         
+          // },
+          
         }
 
     var value;
