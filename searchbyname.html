@@ -347,6 +347,7 @@
         if(parts[0]== varname){
           value = parts[1];
         }
+        value=decodeURI(value);
         console.log('value is ' + value);
         return value;
     }
