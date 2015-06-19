@@ -263,18 +263,16 @@
                   }
 
 
-                  for (var y=1;y<=z;y++){
+                  for (var y=0;y<=z;y++){
 
-                    var content = '<div class=\"profile col-md-4\"><div style=\"position:relative\"><div id=\"followpic'+y+'\" class=\"pic\"></div></div></div>';
+                    var content = '<div class=\"profile col-md-4\"><div style=\"position:relative\"><div id=\"followpic'+y+'\" class=\"pic\"><a href=\"personalprofile.html?id= '+u_id[y]+'\"><img class=\"pict img-rounded\" src=\""http://graph.facebook.com/'+u_id[0]+'/picture\"/></a></div></div></div>';
                     alert(content);
 
                     $('.contain1').append(content);
-                    $('#followPic1').html('<a href="personalprofile.html?id='+u_id[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[0]+'/picture"/></a>');
-                    
                   }
 
 
-
+                   // $('<div class="category-item"><a href="objectpage.html?id='+object.id+'" title="Link"><img src="'+object.get('pic').url()+'" id="pic-select"></a>      <div class = "category-detail"><h2><a href="objectpage.html?id='+object.get('objectId')+'" title="Link">'+object.get('title')+'</a></h2><p>'+object.get('maintext')+'</p>            </div></div>').appendTo('#tab1');
 
 
                   // $('.contain1').append('<div class="profile col-xs-4 col-sm-4 col-md-4">    
