@@ -220,20 +220,21 @@
             }
 
             var array_length= array1.length;
+            alert(array_length);
 
             for(var i=array_length-1;i>=0;i--){
 
-              for(var k=0;k<j;k++){
-                if(u_id[k] == array1[i].get('userid')) {
-                  same = true;
-                }
-              }
+              // for(var k=0;k<j;k++){
+              //   if(u_id[k] == array1[i].get('userid')) {
+              //     same = true;
+              //   }
+              // }
 
-              if(same = false){
+              // if(same = false){
               u_name[j] = array1[i].get('username');
               u_id[j] = array1[i].get('userid');
               j++;
-              }
+              // }
             }
 
             for(var k=0;k<j;k++){
