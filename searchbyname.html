@@ -1,0 +1,638 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>XLanguage</title>
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+  <script src="http://code.jquery.com/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="struct.css">
+  <link rel="stylesheet" type="text/css" href="search.css">
+  <!--<script src="fb.js"></script>-->
+  <script src="//www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+</head>
+
+
+<body>
+      <div id="fb-root"></div>
+
+
+    <script>
+        var userid;
+        Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
+       
+       window.fbAsyncInit = function() {
+        Parse.FacebookUtils.init({ // this line replaces FB.init({
+           appId      : '836005236481666', // Facebook App ID
+           status     : true,  // check Facebook Login status
+           cookie     : true,  // enable cookies to allow Parse to access the session
+           xfbml      : true,  // initialize Facebook social plugins on the page
+           version    : 'v2.3' // point to the latest Facebook Graph API version
+        });
+
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+
+        FB.Event.subscribe('auth.login', function(response) {
+          if (response.status=="connected"){ // if logged in
+              var IfLoggedInDiv=document.getElementById("LogOut");
+              IfLoggedInDiv.style.display="inline-block";
+              var IfNotLoggedInDiv=document.getElementById("LogIn");
+              IfNotLoggedInDiv.style.display="none";
+
+              // get access token
+              ACCESS_TOKEN=response.authResponse.accessToken;
+              //console.log('ACCESS_TOKEN: '+ACCESS_TOKEN);
+
+              // get user id
+              userid=response.authResponse.userID;
+              console.log('userid: '+userid);
+          }
+        });
+            
+        FB.Event.subscribe('auth.logout', function(response) {
+          if (response.status!="connected"){ // if logged out
+              var IfLoggedInDiv=document.getElementById("LogOut");
+              IfLoggedInDiv.style.display="none";
+              var IfNotLoggedInDiv=document.getElementById("LogIn");
+              IfNotLoggedInDiv.style.display="inline-block";
+              FB.logout(function(response){
+                  location.reload();  // refresh
+            });
+          }
+        });
+          // Run code after the Facebook SDK is loaded.
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      
+
+        $(document).on('click','#LogIn',function(e){
+            console.log('click the button!!!');
+            e.preventDefault();
+            fblogin();
+        });
+
+        $(document).on('click','#LogOut',function(e){
+          //  alert('You are logging out. Bye!');
+            var IfLoggedIn=document.getElementById("LogIn");
+            IfLoggedIn.style.display="inline-block";
+            var IfNotLoggedIn=document.getElementById("LogOut");
+            IfNotLoggedIn.style.display="none";
+
+            e.preventDefault();
+            logout();
+        });
+
+        
+      function fblogin(){
+
+        Parse.FacebookUtils.logIn(null, {
+          success: function(user) {
+            if (!user.existed()) {
+              alert("註冊完成並且透過臉書登入");
+            } else {
+              alert("透過臉書登入成功");
+            }
+          //切換至預先寫好登入後的介面
+              FB.getLoginStatus(function(response) {
+                  if (response.status == "connected") {
+
+                      var IfLoggedIn=document.getElementById("LogIn");
+                      IfLoggedIn.style.display="none";
+                      console.log('login display none');
+                      var IfNotLoggedIn=document.getElementById("LogOut");
+                      IfNotLoggedIn.style.display="inline-block";
+                      
+                      FB.api('/me/picture', function (response) {
+                      $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
+                       });
+
+                      var Manage=document.getElementById("manage");
+                      Manage.style.display="inline-block";
+                      console.log('picture display now');
+
+                    } else {
+                      var IfLoggedIn=document.getElementById("LogIn");
+                      IfLoggedIn.style.display="inline-block";
+                      var IfNotLoggedIn=document.getElementById("LogOut");
+                      IfNotLoggedIn.style.display="none";
+                      console.log('User cancelled login or did not fully authorize.');
+                    }
+               }); 
+              },
+              error: function(user, error) {
+                alert("使用者取消登入或沒有授權");
+              }
+        });
+      }
+
+
+        function statusChangeCallback(response) {
+            console.log('statusChangeCallback');
+            console.log(response);
+
+            userid=response.authResponse.userID;
+            console.log('usererid: '+userid);
+              // The response object is returned with a status field that lets the
+              // app know the current login status of the person.
+              // Full docs on the response object can be found in the documentation
+              // for FB.getLoginStatus().
+            if (response.status === 'connected') {
+                // Logged into your app and Facebook.
+                var IfLoggedIn=document.getElementById("LogIn");
+                IfLoggedIn.style.display="none";
+                var IfNotLoggedIn=document.getElementById("LogOut");
+                IfNotLoggedIn.style.display="inline-block";
+                var Manage=document.getElementById("manage");
+                Manage.style.display="inline-block";
+                /*
+                var user_info = document.getElementById("profile_img");
+                user_info.style.display="block";*/
+                testAPI();
+                
+              } else if (response.status === 'not_authorized') {
+               var IfLoggedIn=document.getElementById("LogIn");
+               IfLoggedIn.style.display="inline-block";
+               var IfNotLoggedIn=document.getElementById("LogOut");
+               IfNotLoggedIn.style.display="none";
+               
+               // The person is logged into Facebook, but not your app.
+               // document.getElementById('status').innerHTML = 'Please log ' +
+               //  'into this app.';
+             } else {
+                // The person is not logged into Facebook, so we're not sure if
+                // they are logged into this app or not.
+                //document.getElementById('status').innerHTML = 'Please log ' +
+                //'into Facebook.';
+                var IfLoggedIn=document.getElementById("LogIn");
+                IfLoggedIn.style.display="inline-block";
+                var IfNotLoggedIn=document.getElementById("LogOut");
+                IfNotLoggedIn.style.display="none";
+              }
+      }
+
+      function logout(){
+         Parse.User.logOut();
+         FB.logout(function(response) {
+           console.log('logging out bye');
+         });
+         location.reload();
+      }
+
+      
+      function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me/picture', function (response) {
+        $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
+        });
+
+
+        var personalinfo = Parse.Object.extend("personalinfo"); 
+        var info_p = new Parse.Query(personalinfo);
+
+        info_p.find({
+          success:function(array1){
+            console.log(array1);
+            var j=0;
+            var userinfo = [];
+            var array_length = array1.length;
+            
+            var u_id = [];
+             
+            var userrate = [];
+            var same;
+            var k;
+
+            for(var i=array_length-1; i>=0 ;i--){
+              same= false;
+
+                 if(array1[i].get(value) == true){
+                  console.log('i is'+ i);
+
+                 for(var k=0; k<j;k++){
+                    if(array1[i].get('fb_id')== u_id[k]){
+                      same = true;
+                    }
+                  }  
+                  
+                  if(same == false){
+                    //console.log('getid' + array1[i].get('fb_id') );
+                    //console.log('userid is' + userid);
+
+                    if(array1[i].get('fb_id') == userid){
+                    //  console.log('is urself');
+                    }
+                    else {
+                    //console.log('not same');
+                    u_id[j]= array1[i].get('fb_id');
+                    userinfo[j] = array1[i].get('information');
+                    userrate[j]= array1[i].get('star');
+                    //console.log('facebookid is ' + u_id[j]);
+                    j++; 
+                    }
+                  }        
+                }
+                       
+            } 
+
+          var name = Parse.Object.extend("name");
+          var name_get = new Parse.Query(name);
+          var y;
+          var u_name = [];
+            
+            name_get.find({
+              success:function(array2){
+                var array2_length = array2.length;
+                console.log(array2_length);
+                for(var x=0;x<j;x++){
+                  for(y=array2_length-1;y>=0;y--){
+                    console.log(array2[y].get('userid'));
+
+                    if(u_id[x] == array2[y].get('userid')){
+                      console.log('123');
+                      u_name[x] = array2[y].get('username');
+
+                    }
+
+                  }
+                }
+                $('#name1').html(u_name[0]);
+                $('#name2').html(u_name[1]);
+                $('#name3').html(u_name[2]);
+                $('#name4').html(u_name[3]);
+                $('#name5').html(u_name[4]);
+                $('#name6').html(u_name[5]);
+
+
+
+                   
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              }
+              
+            });
+
+
+            
+            $('#followPic1').html('<a href="personalprofile.html?id='+u_id[0]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[0]+'/picture"/></a>');
+            $('#info1').append(userinfo[0]);
+            $('#rate1').append(userrate[0]);
+            //$('#name1').html('src="https://graph.facebook.com/' + userid[0] + '?fields=name"');
+            $('#followPic2').html('<a href="personalprofile.html?id='+u_id[1]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[1]+'/picture"/></a>');
+            $('#info2').append(userinfo[1]);
+            $('#rate2').append(userrate[1]);
+            $('#followPic3').html('<a href="personalprofile.html?id='+u_id[2]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[2]+'/picture"/></a>');     
+            $('#info3').append(userinfo[2]);
+            $('#rate3').append(userrate[2]);
+
+             $('#followPic4').html('<a href="personalprofile.html?id='+u_id[3]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[3]+'/picture"/></a>');
+            $('#info4').append(userinfo[3]);
+            $('#rate4').append(userrate[3]);
+             $('#followPic5').html('<a href="personalprofile.html?id='+u_id[4]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[4]+'/picture"/></a>');
+            $('#info5').append(userinfo[4]);
+            $('#rate5').append(userrate[4]);
+             $('#followPic6').html('<a href="personalprofile.html?id='+u_id[5]+'"><img class="pict img-rounded" src="http://graph.facebook.com/'+u_id[5]+'/picture"/></a>');
+            $('#info6').append(userinfo[5]);
+            $('#rate6').append(userrate[5]);
+             
+          },
+          error: function(error) {
+              console.log(error) ;
+              alert(error.message);
+            }
+          });
+
+         
+        }
+
+    var value;
+    
+    function getvalue(varname){
+        var url = window.location.href;
+        var qparts = url.split("?");
+        var query  = qparts[1];
+        
+
+        var parts = qparts[1].split("=");
+        if(parts[0]== varname){
+          value = parts[1];
+        }
+        console.log('value is ' + value);
+        return value;
+    }
+
+  $(document).ready(function() {
+        
+        getvalue("lang");
+        console.log('doing getvalue');       
+        
+        Parse.initialize("B3rWaehmMfGulevJwCfAIBEaSANdb29e0YZs0OU4", "wMLWm7nzcaQKpgIvzSpvGUe0MfmMNmFStfoNSGYT");
+
+        window.fbAsyncInit = function() {
+        Parse.FacebookUtils.init({ // this line replaces FB.init({
+           appId      : '836005236481666', // Facebook App ID
+           status     : true,  // check Facebook Login status
+           cookie     : true,  // enable cookies to allow Parse to access the session
+           xfbml      : true,  // initialize Facebook social plugins on the page
+           version    : 'v2.3' // point to the latest Facebook Graph API version
+        });
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+
+        FB.Event.subscribe('auth.login', function(response) {
+          if (response.status=="connected"){ // if logged in
+              var IfLoggedInDiv=document.getElementById("LogOut");
+              IfLoggedInDiv.style.display="inline-block";
+              var IfNotLoggedInDiv=document.getElementById("LogIn");
+              IfNotLoggedInDiv.style.display="none";
+
+              // get access token
+              ACCESS_TOKEN=response.authResponse.accessToken;
+              //console.log('ACCESS_TOKEN: '+ACCESS_TOKEN);
+
+              // get user id
+              userid=response.authResponse.userID;
+              console.log('userid: '+userid);
+          }
+        });
+            
+        FB.Event.subscribe('auth.logout', function(response) {
+          if (response.status!="connected"){ // if logged out
+              var IfLoggedInDiv=document.getElementById("LogOut");
+              IfLoggedInDiv.style.display="none";
+              var IfNotLoggedInDiv=document.getElementById("LogIn");
+              IfNotLoggedInDiv.style.display="inline-block";
+              FB.logout(function(response){
+                  location.reload();  // refresh
+            });
+          }
+        });
+          // Run code after the Facebook SDK is loaded.
+
+       
+        };
+
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+      });
+
+
+      
+
+    </script>
+
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-inner">
+          <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+
+              <a class="brand" href="MainPage.html">
+              <img src="logo.png" id="logo"></a>
+            </div>
+
+
+            <div id="navbar" class="navbar-collapse collapse">
+              <ul class="nav navbar-nav">
+                <li><a href="#">About Us</a></li>
+
+                <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> XLanguager
+                <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                  
+                  <div class="display_inline">
+                  <ul>
+                  <li><a href="search.html?lang=spain"><img src="spain.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=japan"><img src="japan.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=frence"><img src="french.jpg" class="img-circle" width="50" height="50"></a></li>
+                  </ul>
+                  </div>
+                  
+                  <div class="display_inline">
+                  <ul>
+                  <li><a href="search.html?lang=taiwan"><img src="taiwan.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=usa"><img src="usa.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=germany"><img src="germany.jpg" class="img-circle" width="50" height="50"></a></li>
+                  </ul>
+                  </div>
+
+                  <div class="display_inline">
+                  <ul>
+                  <li><a href="search.html?lang=hongkong"><img src="hongkong.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=thailand"><img src="thailand.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=korea"><img src="korea.jpg" class="img-circle" width="50" height="50"></a></li>
+                  </ul>
+                  </div>
+
+
+
+                </ul>
+                </li>
+
+                <li>
+                <form class="navbar-form" role="search">
+               <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+               </div>
+
+               <a class="fa fa-search" href="#" ></a>
+            </form>
+                </li>
+              </ul>
+
+              <ul class="nav pull-right">
+
+
+              <!--<li><a> <span data-toggle="modal" data-target="#regist-modal">註冊</span></a></li>-->
+                
+              <!--
+              <li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+              </fb:login-button></li>
+                -->
+              <div class="btn-group">
+              <a title="Login/Register" id="LogIn"><div class="orange ui buttons">
+              <div class="ui button">Login</div></div></a>
+              
+               <li class="dropdown">
+
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="manage" href= "">
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="profile.html">Profile</a></li>
+                <li><a href="#">calendar</a></li>
+                <li> <a  title="Login/Register" id="LogOut"><div class="orange ui buttons">
+                <div class="ui button">Logout</div></div></a></li>
+                </ul>
+              
+              </li>
+
+              </div>
+              <!--
+                 <li><a href="#" data-ga-category='header-login'> <span data-toggle="modal" data-target="#login-modal">登入</span></a></li>-->
+
+              </ul>
+            </div>
+
+
+          </div>
+         </div>
+        </nav>
+
+<div id="body">
+  <div class="row">
+  
+  <div class="country col-xs-3 col-sm-3 col-md-3">
+          
+        <h3 class="title" id="Lan">Languages</h3>
+        
+        <div>   
+          <input type="checkbox" name="language" id="eng"> 
+          <label for="eng" class="lanCheck">English</label>
+        </div>
+      
+        <div>     
+          <input type="checkbox" name="language" id="spn">    
+          <label for="spn" class="lanCheck">Spanish</label> 
+        </div>
+      
+        <div>      
+          <input type="checkbox" name="language" id="jpn">    
+          <label for="jpn" class="lanCheck">Japanese</label>
+        </div>
+      
+        <div>  
+          <input type="checkbox" name="language" id="man">    
+          <label for="man" class="lanCheck">Mandarin Chinese</label>  
+        </div>
+    
+        <div>  
+          <input type="checkbox" name="language" id="ctn">    
+          <label for="ctn" class="lanCheck">Cantonese</label> 
+        </div>
+      
+        <div>       
+          <input type="checkbox" name="language" id="fra">   
+          <label for="fra" class="lanCheck">French</label>    
+        </div>
+      
+        <div>     
+          <input type="checkbox" name="language" id="por">    
+          <label for="por" class="lanCheck">Portuguese</label>  
+        </div>
+      
+        <div>  
+          <input type="checkbox" name="language" id="min">    
+          <label for="min" class="lanCheck">Taiwanese (Min Chinese)</label>
+        </div>
+  
+  </div><!-- /.country -->
+  
+  <div class="col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
+
+    
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+      
+      <div style="position:relative">
+        <div id="followPic1" class="pic"></div>
+        <!--<img src="" id="countryPic1">-->
+      </div>
+      
+      <div class="profileInfo">
+        <span class="name" id="name1"></span><br>          
+        <span class="rating" id="rate1"></span><span>&nbsp;STARS</span><br>
+        <div class="description" id="info1"></div>
+        <!--<span class="followers">Follower: <span id="followNum">1</span></span>-->
+      </div>
+      
+    </div><!-- /.profile -->
+    
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+      <div style="position:relative">
+        <div id="followPic2" class="pic"></div>
+      </div>
+      <div class="profileInfo">
+        <span class="name" id="name2"></span><br>         
+        <span class="rating" id="rate2"></span><span>&nbsp;STARS</span><br>
+        <div class="description" id="info2"></div>
+      </div>
+    </div><!-- /.profile -->
+    
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic3" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name3"></span><br>          
+      <span class="rating" id="rate3"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info3"></div>
+    </div>  
+    </div><!-- /.profile -->
+
+    
+<!--     <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic4" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name4"></span><br>          
+      <span class="rating" id="rate4"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info4"></div>
+    </div>  
+    </div>
+
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic5" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name5"></span><br>          
+      <span class="rating" id="rate5"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info5"></div>
+    </div>  
+    </div>
+
+    <div class="profile col-xs-4 col-sm-4 col-md-4">
+    <div style="position:relative">
+      <div id="followPic6" class="pic"></div>
+    </div>
+    <div class="profileInfo">
+      <span class="name" id="name6"></span><br>          
+      <span class="rating" id="rate6"></span><span>&nbsp;STARS</span><br>
+      <div class="description" id="info6"></div>
+    </div>  
+    </div> -->
+    
+  </div>
+  </div>  
+  
+  
+</body>
+</html>

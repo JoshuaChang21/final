@@ -192,6 +192,20 @@
       }
 
 
+      
+        $('#searchbar').on('click',function(){
+        console.log('haha');
+        var text = document.getElementById('searchtext');
+        var textvalue = text.value();
+
+        var locat = 'searchbyname.html?';
+        locat.append(textvalue);
+
+        alert(locat);
+      });
+     
+
+
 
     </script>
 
@@ -251,12 +265,12 @@
                 </li>
 
                 <li>
-                <form class="navbar-form" role="search">
+            <form class="navbar-form" role="search">
 		           <div class="form-group">
-		              <input type="text" class="form-control" placeholder="Search">
+		              <input type="text" class="form-control" placeholder="Search" id="searchtext">
 		           </div>
 
-		           <a class="fa fa-search" href="#" ></a>
+		           <i class="fa fa-search"  id="searchbar"></i>
 		        </form>
                 </li>
               </ul>
