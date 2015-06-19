@@ -518,6 +518,18 @@
         }(document, 'script', 'facebook-jssdk'));
       });
 
+    function EasySearch(event){
+          event.preventDefault();
+          // var Exhibition = Parse.Object.extend("Exhibition");
+          // var query = new Parse.Query(Exhibition);
+          var key=$('#easysearch').val();
+          key=decodeURI(key);
+          console.log(key);
+          var link = 'searchbyname.html?text='+key;
+          window.location = link;
+
+    }
+
 
       
 
@@ -579,13 +591,14 @@
                 </li>
 
                 <li>
-                <form class="navbar-form" role="search">
+              <form class="navbar-form" role="search">
                <div class="form-group">
-                  <input type="text" class="form-control" placeholder="Search">
+                  <input type="text" class="form-control" placeholder="Search" id="easysearch">
                </div>
 
-               <a class="fa fa-search" href="#" ></a>
-            </form>
+               <button onclick="EasySearch(event);" class="btn btn-default easybutton" id="easybutton">Search</button>
+
+              </form>
                 </li>
               </ul>
 
