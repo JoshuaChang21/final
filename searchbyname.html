@@ -213,6 +213,7 @@
 
           success:function(array1){
             console.log(array1);  
+            
             if(array1.length == 0){
               alert('no matches information');
               return;
@@ -223,15 +224,16 @@
             for(var i=array_length-1;i>=0;i--){
 
               for(var k=0;k<j;k++){
-                if(u_id[k] == array1[i].get('userid')){
+                if(u_id[k] == array1[i].get('userid')) {
                   same = true;
                 }
               }
 
-              if(same = false){}
+              if(same = false){
               u_name[j] = array1[i].get('username');
               u_id[j] = array1[i].get('userid');
               j++;
+              }
             }
 
             for(var k=0;k<j;k++){
