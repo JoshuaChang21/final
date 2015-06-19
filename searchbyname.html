@@ -209,6 +209,9 @@
 
           success:function(array1){
             console.log(array1);
+            if(array1.length == 0){
+              alert('no matches information');
+            }
             var j=0;
             var userinfo = [];
             var array_length = array1.length;
