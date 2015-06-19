@@ -208,7 +208,7 @@
         var u_name = [];
         var userrate = [];
         var same=true;
-        var j;
+        var j=0;
          info_p.find({
 
           success:function(array1){
@@ -222,6 +222,7 @@
             var array_length= array1.length;
             alert(array_length);
 
+            var j2=0;
             for(var i=array_length-1;i>=0;i--){
 
               // for(var k=0;k<j;k++){
@@ -231,16 +232,16 @@
               // }
 
               // if(same = false){
-              u_name[j] = array1[i].get('username');
-              u_id[j] = array1[i].get('userid');
-              j++;
+              u_name[j2] = array1[i].get('username');
+              u_id[j2] = array1[i].get('userid');
+              j2++;
               // }
             }
 
-            console.log('j' + j );
-            
+            console.log(j2);
 
-            for(var k=0;k<j;k++){
+
+            for(var k=0;k<j2;k++){
               console.log('name'+u_name[k]);
               console.log('id' + u_id[k]);
             }
