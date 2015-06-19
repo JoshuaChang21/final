@@ -276,7 +276,7 @@
 
                 for (var y=1;y<=j;y++){
 
-                    var content = '<div class=\"profile col-md-4\"><div style=\"position:relative\"><div id=\"followpic'+y+'\" class=\"pic\"><a href=\"personalprofile.html?id= '+u_id[y-1]+'\"><img class=\"pict img-rounded\" src=\"http://graph.facebook.com/'+u_id[y-1]+'/picture\"/></a></div><div class=\"profileInfo\"><span class="\"name\">'+u_name[y-1]+'</span><br><span class=\"rating\"> '+star[y-1]+'</span><span>&nbsp;STARS</span><br><div class=\"description\"> '+ info[y-1]+'<div></div></div>';
+                    var content = '<div class=\"profile col-md-4\"><div style=\"position:relative\"><div id=\"followpic'+y+'\" class=\"pic\"><a href=\"personalprofile.html?id= '+u_id[y-1]+'\"><img class=\"pict img-rounded\" src=\"http://graph.facebook.com/'+u_id[y-1]+'/picture\"/></a></div><div class=\"profileInfo\"><span class="\"name\">'+u_name[y-1]+'</span><br><span class=\"rating\"> '+userrate[y-1]+'</span><span>&nbsp;STARS</span><br><div class=\"description\"> '+ userinfo[y-1]+'<div></div></div>';
                     
 
                     $('.contain1').append(content);
