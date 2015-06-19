@@ -494,6 +494,7 @@
           var name_get = new Parse.Query(name);
           var y;
           var from_name = [];
+          var toname = [];
             
             name_get.find({
               success:function(array2){
@@ -806,7 +807,7 @@
     <article id="calendar">
       <div class="profile_calendar">
         <img src="calendar.jpg" class="calendar">
-        <p>Your Latest Three Booked Time: <span class="label"> </span></p>
+        <p>Booked From Friends: <span class="label"> </span></p>
         <div class="invitee">
         <span class="label" id="date1"></span>
         <span class="label place" id="place1"></span>
@@ -829,6 +830,7 @@
       </div>
 
       <div class="profile_calendar">
+      <p>Booked to Friends: <span class="label"> </span></p>
         <div class="invitee">
         <span class="label" id="d1"></span>
         <span class="label place" id="p1"></span>
