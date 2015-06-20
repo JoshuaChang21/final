@@ -64,6 +64,28 @@
            }
          });
        });
+       
+       var Comment = Parse.Object.extend("Comment") ;
+       var queryComments = new Parse.Query (Comment) ;
+       queryComments.include("writer");
+       queryComments.find({
+        success : function(arrayOfQueriedObjects){
+          console.log (arrayOfQueriedObjects);
+          for (var i = 0 ; i < arrayOfQueriedObjects.length ; i++){
+            comment = arrayOfQueriedObjects[i] ;
+            
+            $("#commentAll").append(
+              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
+               + username
+               + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
+               + comment.get("message")
+               +"</div></div><hr>");
+          }
+        },
+        error : function(errorObject){
+          alert(errorObject.message) ;
+        }
+      });
 
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
@@ -626,46 +648,7 @@
         <span>MORE INFORMATION:<span id="more_inform"></span></span>
       </div>
 
-      <div class="comment">
-        <div class="row">
-        <div class="people col-md-2">
-          <img src="profile.jpg" class="img-circle" width="75" height="75">
-          <p>※※※※※</p>
-        </div>
-
-        <div class="comment_contents col-md-10">f
-          <p>He is a very good xlanguager!! pretty recommend him!</p>
-        </div>
-
-        </div>
-      </div>
-
-      <div class="comment">
-        <div class="row">
-        <div class="people col-md-2">
-          <img src="profile.jpg" class="img-circle" width="75" height="75">
-          <p>※※</p>
-        </div>
-
-        <div class="comment_contents col-md-10">
-          <p>He is a very good xlanguager!! pretty recommend him!</p>
-        </div>
-
-        </div>
-      </div>
-
-      <div class="comment">
-        <div class="row">
-        <div class="people col-md-2">
-          <img src="profile.jpg" class="img-circle" width="75" height="75">
-          <p>※※※</p>
-        </div>
-
-        <div class="comment_contents col-md-10">
-          <p>He is a very good xlanguager!! pretty recommend him!</p>
-        </div>
-
-        </div>
+      <div class="comments" id="commentAll">
       </div>
 
       <div class="comment_type">
