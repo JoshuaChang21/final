@@ -76,8 +76,7 @@
             
             $("#commentShow").append(
               "<blockquote>"+
-                comment.get("writer").get("username") + ": " +comment.get("message")+
-                "<br><img src='"+ comment.get("img").url()+"' height='100px'>"+
+                username + ": " + comment.get("message") +
               "</blockquote>");
           }
         },
