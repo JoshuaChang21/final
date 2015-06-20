@@ -55,6 +55,7 @@
          comment.set("message",$("#comment").val());
          comment.set("writer",Parse.User.current());
          comment.set("userid",userid);
+         comment.set("targetid",value);
 
          comment.save({
            success : function(savedParseObject){
