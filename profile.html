@@ -53,6 +53,9 @@
          var comment = new Comment();
          comment.set("message",$("#comment").val());
          comment.set("writer",Parse.User.current());
+         comment.set("userid",userid);
+         comment.set("targetid",userid);
+
          comment.save({
            success : function(savedParseObject){
            alert("留言成功");
@@ -68,6 +71,7 @@
        var Comment = Parse.Object.extend("Comment") ;
        var queryComments = new Parse.Query (Comment) ;
        queryComments.include("writer");
+       queryComments.equalTo("targetid",userid);
        queryComments.find({
         success : function(arrayOfQueriedObjects){
           console.log (arrayOfQueriedObjects);
@@ -76,7 +80,7 @@
             
             $("#commentAll").append(
               "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-               + username
+               + comment.get("userid")
                + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
                + comment.get("message")
                +"</div></div><hr>");
