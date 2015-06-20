@@ -74,13 +74,11 @@
           for (var i = 0 ; i < arrayOfQueriedObjects.length ; i++){
             comment = arrayOfQueriedObjects[i] ;
             
-            $("#commentAll").append()
-              // "<div class="row"><div class="people col-md-2">
-              //   <img src="profile.jpg" class="img-circle" width="75" height="75">
-              //   <p>※※※※※</p></div>
-              //   <div class="comment_contents col-md-10" id="commentShow">"
-              //   + comment.get("message")
-              //   + "</div></div>");
+            $("#commentShow").append(
+              "<blockquote>"+
+                comment.get("writer").get("username") + ": " +comment.get("message")+
+                "<br><img src='"+ comment.get("img").url()+"' height='100px'>"+
+              "</blockquote>");
           }
         },
         error : function(errorObject){
@@ -786,6 +784,13 @@
       </div>
 
       <div class="comments" id="commentAll">
+        <div class="row">
+           <div class="people col-md-2">
+             <img src="profile.jpg" class="img-circle" width="75" height="75">
+             <p>※※※※※</p>
+           </div>
+           <div class="comment_contents col-md-10" id="commentShow"></div>
+        </div>
       </div>
 
       <div class="comment_type">
