@@ -76,7 +76,7 @@
             
             $("#commentAll").append(
               "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-               + comment.get("writer").get("fb_id")
+               + comment.get("writer").get("authData")
                + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
                + comment.get("message")
                +"</div></div><hr>");
