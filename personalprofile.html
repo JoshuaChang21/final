@@ -55,7 +55,7 @@
          comment.set("message",$("#comment").val());
          comment.set("writer",Parse.User.current());
          comment.set("userid",userid);
-         comment.set("username"username);
+         comment.set("username",username);
          comment.save({
            success : function(savedParseObject){
            alert("留言成功");
