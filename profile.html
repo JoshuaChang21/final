@@ -75,7 +75,7 @@
             comment = arrayOfQueriedObjects[i] ;
             // console.log("c" , comment);
             // console.log("u" , comment.get("user") );
-            $("#comment").append(
+            $("#commentShow").append(
               "<blockquote>"+
                 username + ": " + comment.get("message") + "</blockquote>");
           }
@@ -782,15 +782,13 @@
         <span>MORE INFORMATION:<span id="more_inform"></span></span>
       </div>
 
-      <div class="comment">
+      <div class="comments">
         <div class="row">
            <div class="people col-md-2">
              <img src="profile.jpg" class="img-circle" width="75" height="75">
              <p>※※※※※</p>
            </div>
-           <div class="comment_contents col-md-10">
-           <p>He is a very good xlanguager!! pretty recommend him!</p>
-           </div>
+           <div class="comment_contents col-md-10" id="commentShow"></div>
         </div>
       </div>
 
