@@ -81,7 +81,7 @@
             
             $("#commentAll").append(
               "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-               + comment.get("userid")
+               + "<p id='commentUser'></p>"
                + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
                + comment.get("message")
                +"</div></div><hr>");
@@ -91,7 +91,7 @@
           alert(errorObject.message) ;
         }
       });
-
+      
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
            appId      : '836005236481666', // Facebook App ID
@@ -345,7 +345,8 @@
                       u_name = array2[y].get('username');
                     }
                 }
-                $('#profile_name').append(u_name);                 
+                $('#profile_name').append(u_name); 
+                $('#commentUser').append(u_name);
               },
               error: function(error) {
                 console.log(error) ;
