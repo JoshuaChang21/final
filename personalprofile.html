@@ -437,6 +437,9 @@
               console.log('Values comment');
               fromid[j] = resultComment[i].get('userid');
               commentindex[j] = resultComment[i].get('message');
+              // alert(fromid[0]);
+              // alert(fromid[1]);
+              // alert(commentindex[0]);
               j++;
             }
           }
@@ -474,9 +477,6 @@
               },
               
             });
-          // alert(fromid[0]);
-          // alert(fromid[1]);
-          // alert(commentindex[0]);
         },
         error : function(errorObject){
           alert(errorObject.message) ;
