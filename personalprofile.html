@@ -93,10 +93,10 @@
             name_get.find({
               success:function(resultName){
                 for(var x = resultName.length - 1; x >= 0; x--){
-                  if(comment.get('userid') == resultName[x].get('userid')){
+                  if(comment[i].get('userid') == resultName[x].get('userid')){
                     commentName = resultName[x].get('username');
+                    $('#commentUser').append(commentName);
                   }
-                $('#commentUser').append(commentName);
                 }
               },
               error: function(error) {
