@@ -54,7 +54,7 @@
          comment.set("message",$("#comment").val());
          comment.set("writer",Parse.User.current());
          comment.set("userid",userid);
-         comment.set("targetid",userid);
+         comment.set("targetid",value);
 
          comment.save({
            success : function(savedParseObject){
@@ -70,27 +70,67 @@
        
        var Comment = Parse.Object.extend("Comment") ;
        var queryComments = new Parse.Query (Comment) ;
-       queryComments.include("writer");
-       queryComments.equalTo("targetid",userid);
+       //queryComments.include("writer");
+       //queryComments.equalTo("targetid",value);
+       
        queryComments.find({
-        success : function(arrayOfQueriedObjects){
-          console.log (arrayOfQueriedObjects);
-          for (var i = 0 ; i < arrayOfQueriedObjects.length ; i++){
-            comment = arrayOfQueriedObjects[i] ;
+        success : function(resultComment){
+          console.log (resultComment);
+          var commentindex = [];
+          var fromid = [];
+          var fromname = [];
+          var j=0;
+          for (var i = resultComment.length - 1 ; i >= 0 ; i--){
             
-            $("#commentAll").append(
-              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-               + comment.get("userid")
-               + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
-               + comment.get("message")
-               +"</div></div><hr>");
+            if(resultComment[i].get('targetid') == userid){
+              console.log('Values comment');
+              fromid[j] = resultComment[i].get('userid');
+              commentindex[j] = resultComment[i].get('message');
+              // alert(fromid[0]);
+              // alert(fromid[1]);
+              // alert(commentindex[0]);
+              j++;
+            }
           }
+              
+              var name = Parse.Object.extend("name");
+              var name_get = new Parse.Query(name);
+              var y;
+              var u_name = [];
+              
+              name_get.find({
+              success:function(array2){
+                
+                for(var x = 0; x < j; x++){
+                  for(y = array2.length-1; y >= 0; y--){
+                    if(fromid[x] == array2[y].get('userid')){
+                      u_name[x] = array2[y].get('username');
+                    }
+                  }
+                }
+                
+                for (var y = 1; y <= j; y++){
+                  $("#commentAll").append(
+                    "<div class='row'><div class='people col-md-2'>"
+                    + "<img src='http://graph.facebook.com/" + fromid[y-1] + "/picture' class='img-circle' width='75' height='75'>"
+                    + "<p id='commentUser'>" + u_name[y-1] + "</p>"
+                    + "</div><div class='comment_contents col-md-10' id='commentShow'>"
+                    + commentindex[y-1]
+                    +"</div></div><hr>");             
+                }
+                
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              },
+              
+            });
         },
         error : function(errorObject){
           alert(errorObject.message) ;
         }
       });
-
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
            appId      : '836005236481666', // Facebook App ID
