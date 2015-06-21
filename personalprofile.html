@@ -437,23 +437,20 @@
               console.log('Values comment');
               fromid[j] = resultComment[i].get('userid');
               commentindex[j] = resultComment[i].get('message');
+              
+              $("#commentAll").append(
+              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
+              + "<p id='commentUser'>" + fromid[j] "</p>"
+              + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
+              + commentindex[j]
+              +"</div></div><hr>");
+              
               j++;
             }
           }
           // alert(fromid[0]);
           // alert(fromid[1]);
           // alert(commentindex[0]);
-            
-           // comment = resultComment[i] ;
-          // for(var k=0; k<j; k++){
-          //   $("#commentAll").append(
-          //     "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-          //     + "<p id='commentUser'></p>"
-          //     + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
-          //     + comment.get("message")
-          //     +"</div></div><hr>");
-                  
-          // }
         },
         error : function(errorObject){
           alert(errorObject.message) ;
