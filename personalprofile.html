@@ -421,22 +421,39 @@
        
        var Comment = Parse.Object.extend("Comment") ;
        var queryComments = new Parse.Query (Comment) ;
-       queryComments.include("writer");
-       queryComments.equalTo("targetid",value);
+       //queryComments.include("writer");
+       //queryComments.equalTo("targetid",value);
+       
        queryComments.find({
         success : function(resultComment){
           console.log (resultComment);
+          var commentindex = [];
+          var fromid = [];
+          var fromname = [];
+          var j=0;
           for (var i = resultComment.length - 1 ; i >= 0 ; i--){
-            comment = resultComment[i] ;
             
-            $("#commentAll").append(
-              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-               + "<p id='commentUser'></p>"
-               + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
-               + comment.get("message")
-               +"</div></div><hr>");
-            
+            if(resultComment[i].get('targetid') == value){
+              console.log('Value's comment');
+              fromid[j] = resultComment[i].get('userid');
+              commentindex[j] = resultComment[i].get('message');
+              j++;
+            }
           }
+          alert(fromid[0]);
+          alert(fromid[1]);
+          alert(commentindex[0]);
+            
+           // comment = resultComment[i] ;
+          // for(var k=0; k<j; k++){
+          //   $("#commentAll").append(
+          //     "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
+          //     + "<p id='commentUser'></p>"
+          //     + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
+          //     + comment.get("message")
+          //     +"</div></div><hr>");
+                  
+          // }
         },
         error : function(errorObject){
           alert(errorObject.message) ;
