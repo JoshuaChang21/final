@@ -572,11 +572,15 @@
                     if(fromid[x] == array2[y].get('userid')){
                       from_name[x] = array2[y].get('username');
                     }
-
+                  }
+                }
+                
+                for(var x=0;x<j2;x++){
+                  for(y=array2_length-1;y>=0;y--){
                     if(toid[x] == array2[y].get('userid')){
                       toname[x]= array2[y].get('username');
-                    }
                   }
+                }
                 }
 
                 $('#name1').append(from_name[0]); 
