@@ -453,6 +453,7 @@
           value = parts[1];
         }
         value=decodeURI(value);
+        value = value.toLowerCase();
         console.log('value is ' + value);
         return value;
     }
