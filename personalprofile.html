@@ -95,9 +95,9 @@
                 for(var x = resultName.length; x >= 0; x--){
                   if(comment.get('userid') == resultName[x].get('userid')){
                     commentName = resultName[y].get('username');
+                    $('#commentUser').append(commentName);
                   }
                 }
-                $('#commentUser').append(commentName); 
               },
               error: function(error) {
                 console.log(error) ;
