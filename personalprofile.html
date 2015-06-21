@@ -422,7 +422,7 @@
        var Comment = Parse.Object.extend("Comment") ;
        var queryComments = new Parse.Query (Comment) ;
        queryComments.include("writer");
-       //queryComments.equalTo("targetid",value);
+       queryComments.equalTo("targetid",value);
        queryComments.find({
         success : function(resultComment){
           console.log (resultComment);
