@@ -438,9 +438,32 @@
               fromid[j] = resultComment[i].get('userid');
               commentindex[j] = resultComment[i].get('message');
               
+              var name = Parse.Object.extend("name");
+              var name_get = new Parse.Query(name);
+              var y;
+              var u_name = [];
+              
+              name_get.find({
+              success:function(array2){
+                for(var x = 0; x < j; x++){
+                  for(y = array2.length-1; y >= 0; y--){
+                    if(fromid[x] == array2[y].get('userid')){
+                      u_name[x] = array2[y].get('username');
+                    }
+                  }
+                }
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              },
+              
+            });
+              
               $("#commentAll").append(
-              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-              + "<p id='commentUser'>" + fromid[j] + "</p>"
+              "<div class='row'><div class='people col-md-2'>"
+              + "<img src='profile.jpg' class='img-circle' width='75' height='75'>"
+              + "<p id='commentUser'>" + u_name[x-1] + "</p>"
               + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
               + commentindex[j]
               +"</div></div><hr>");
