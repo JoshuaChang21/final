@@ -74,10 +74,10 @@
        queryComments.include("writer");
        //queryComments.equalTo("targetid",value);
        queryComments.find({
-        success : function(arrayOfQueriedObjects){
-          console.log (arrayOfQueriedObjects);
-          for (var i = 0 ; i < arrayOfQueriedObjects.length ; i++){
-            comment = arrayOfQueriedObjects[i] ;
+        success : function(resultComment){
+          console.log (resultComment);
+          for (var i = 0 ; i < resultComment.length ; i++){
+            comment = resultComment[i] ;
             
             $("#commentAll").append(
               "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
