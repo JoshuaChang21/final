@@ -85,13 +85,33 @@
                + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
                + comment.get("message")
                +"</div></div><hr>");
+               
+            var name = Parse.Object.extend("name");
+            var name_get = new Parse.Query(name);
+            var commentName;
+            
+            name_get.find({
+              success:function(resultName){
+                for(var x = resultName.length; x >= 0; x--){
+                  if(comment.get('userid') == resultName[x].get('userid')){
+                    commentName = resultName[y].get('username');
+                  }
+                }
+                $('#commentUser').append(commentName); 
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              }
+            });
+            
           }
         },
         error : function(errorObject){
           alert(errorObject.message) ;
         }
       });
-      
+
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
            appId      : '836005236481666', // Facebook App ID
@@ -346,7 +366,6 @@
                     }
                 }
                 $('#profile_name').append(u_name); 
-                $('#commentUser').append(u_name);
               },
               error: function(error) {
                 console.log(error) ;
