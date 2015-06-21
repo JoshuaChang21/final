@@ -92,7 +92,7 @@
             
             name_get.find({
               success:function(resultName){
-                for(var x = resultName.length; x >= 0; x--){
+                for(var x = resultName.length - 1; x >= 0; x--){
                   if(comment.get('userid') == resultName[x].get('userid')){
                     commentName = resultName[y].get('username');
                     $('#commentUser').append(commentName);
