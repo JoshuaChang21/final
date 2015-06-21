@@ -76,7 +76,7 @@
        queryComments.find({
         success : function(resultComment){
           console.log (resultComment);
-          for (var i = 0 ; i < resultComment.length ; i++){
+          for (var i = resultComment.length - 1 ; i >= 0 ; i--){
             comment = resultComment[i] ;
             
             $("#commentAll").append(
@@ -93,7 +93,7 @@
             name_get.find({
               success:function(resultName){
                 for(var x = resultName.length - 1; x >= 0; x--){
-                  if(comment[i-1].get('userid') == resultName[x].get('userid')){
+                  if(comment.get('userid') == resultName[x].get('userid')){
                     commentName = resultName[x].get('username');
                     $('#commentUser').append(commentName);
                   }
