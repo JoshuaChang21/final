@@ -7,7 +7,7 @@
 }
 
 body{
-	background-image:url(background.png);
+	background:#F6DCA4;
 }	
 
 #logo{
@@ -32,14 +32,22 @@ body{
 .nav{
 	padding:0;
 	position:relative;
+
+
 }
 
 .nav{
 	list-style: none;
+
 }
 
 .navbar-header{
 	width:8%;
+
+}
+
+.navbar-default .navbar-nav > li > a {
+  color: #FFFFFF;
 }
 
 .navbar .nav > li {
@@ -54,7 +62,7 @@ body{
 }
 
 .navbar{
-	background-image:url(background.png);
+    background:#0F3B60;
 }
 
 /*

@@ -47,6 +47,50 @@
        var userid;
        var username;
        console.log(userid);
+       
+       $(document).on('submit','#commentType',function(eventObject){
+         eventObject.preventDefault();
+         var Comment = Parse.Object.extend("Comment") ;
+         var comment = new Comment();
+         comment.set("message",$("#comment").val());
+         comment.set("writer",Parse.User.current());
+         comment.set("userid",userid);
+         comment.set("targetid",value);
+
+         comment.save({
+           success : function(savedParseObject){
+           alert("留言成功");
+           window.location.reload();
+           },
+           error : function (errorObject){
+             console.log(errorObject);
+             alert(errorObject.message);
+           }
+         });
+       });
+       
+       var Comment = Parse.Object.extend("Comment") ;
+       var queryComments = new Parse.Query (Comment) ;
+       queryComments.include("writer");
+       //queryComments.equalTo("targetid",value);
+       queryComments.find({
+        success : function(arrayOfQueriedObjects){
+          console.log (arrayOfQueriedObjects);
+          for (var i = 0 ; i < arrayOfQueriedObjects.length ; i++){
+            comment = arrayOfQueriedObjects[i] ;
+            
+            $("#commentAll").append(
+              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
+               + comment.get("userid")
+               + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
+               + comment.get("message")
+               +"</div></div><hr>");
+          }
+        },
+        error : function(errorObject){
+          alert(errorObject.message) ;
+        }
+      });
 
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
@@ -301,7 +345,7 @@
                       u_name = array2[y].get('username');
                     }
                 }
-                $('#profile_name').append(u_name); 
+                $('#profile_name').append(u_name);                 
               },
               error: function(error) {
                 console.log(error) ;
@@ -397,91 +441,6 @@
         }
 
         var value;
-        
-        $(document).on('submit','#commentType',function(eventObject){
-         eventObject.preventDefault();
-         var Comment = Parse.Object.extend("Comment") ;
-         var comment = new Comment();
-         comment.set("message",$("#comment").val());
-         comment.set("writer",Parse.User.current());
-         comment.set("userid",userid);
-         comment.set("targetid",value);
-
-         comment.save({
-           success : function(savedParseObject){
-           alert("留言成功");
-           window.location.reload();
-           },
-           error : function (errorObject){
-             console.log(errorObject);
-             alert(errorObject.message);
-           }
-         });
-       });
-       
-       var Comment = Parse.Object.extend("Comment") ;
-       var queryComments = new Parse.Query (Comment) ;
-       //queryComments.include("writer");
-       //queryComments.equalTo("targetid",value);
-       
-       queryComments.find({
-        success : function(resultComment){
-          console.log (resultComment);
-          var commentindex = [];
-          var fromid = [];
-          var fromname = [];
-          var j=0;
-          for (var i = resultComment.length - 1 ; i >= 0 ; i--){
-            
-            if(resultComment[i].get('targetid') == value){
-              console.log('Values comment');
-              fromid[j] = resultComment[i].get('userid');
-              commentindex[j] = resultComment[i].get('message');
-              // alert(fromid[0]);
-              // alert(fromid[1]);
-              // alert(commentindex[0]);
-              j++;
-            }
-          }
-              
-              var name = Parse.Object.extend("name");
-              var name_get = new Parse.Query(name);
-              var y;
-              var u_name = [];
-              
-              name_get.find({
-              success:function(array2){
-                
-                for(var x = 0; x < j; x++){
-                  for(y = array2.length-1; y >= 0; y--){
-                    if(fromid[x] == array2[y].get('userid')){
-                      u_name[x] = array2[y].get('username');
-                    }
-                  }
-                }
-                
-                for (var y = 1; y <= j; y++){
-                  $("#commentAll").append(
-                    "<div class='row'><div class='people col-md-2'>"
-                    + "<img src='http://graph.facebook.com/" + fromid[y-1] + "/picture' class='img-circle' width='75' height='75'>"
-                    + "<p id='commentUser'>" + u_name[y-1] + "</p>"
-                    + "</div><div class='comment_contents col-md-10' id='commentShow'>"
-                    + commentindex[y-1]
-                    +"</div></div><hr>");             
-                }
-                
-              },
-              error: function(error) {
-                console.log(error) ;
-                alert(error.message);
-              },
-              
-            });
-        },
-        error : function(errorObject){
-          alert(errorObject.message) ;
-        }
-      });
     
         function getvalue(varname){
             var url = window.location.href;
@@ -591,7 +550,7 @@
 
             <div id="navbar" class="navbar-collapse collapse">
               <ul class="nav navbar-nav">
-                <li><a href="aboutUs.html">About Us</a></li>
+                <li><a href="#">About Us</a></li>
 
                 <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"> XLanguager<span class="caret"></span>
@@ -812,13 +771,13 @@
    place = 2;
   });
 
-  $( "#silence" ).click(function() {
+  $( "#daonan" ).click(function() {
    here.style.opacity = "1";
    arty.style.opacity = "1";
    old.style.opacity = "1";
-   daonan.style.opacity = "1";
+   daonan.style.opacity = "0.5";
    little.style.opacity = "1";
-   silence.style.opacity = "0.5";
+   silence.style.opacity = "1";
    place = 3;
   });
 
@@ -832,13 +791,13 @@
    place = 4;
   });
 
-  $( "#daonan" ).click(function() {
+  $( "#silence" ).click(function() {
    here.style.opacity = "1";
    arty.style.opacity = "1";
    old.style.opacity = "1";
-   daonan.style.opacity = "0.5";
+   daonan.style.opacity = "1";
    little.style.opacity = "1";
-   silence.style.opacity = "1";
+   silence.style.opacity = "0.5";
    place = 5;
   });
 
