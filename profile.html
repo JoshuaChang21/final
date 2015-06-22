@@ -570,9 +570,10 @@
                 console.log(array2_length);
                 for(var x=0;x<j;x++){
                   for(y=array2_length-1;y>=0;y--){
-
                     if(fromid[x] == array2[y].get('userid')){
+                      alert('same' + fromid[x]);
                       from_name[x] = array2[y].get('username');
+                      alert('name' + from_name[x]);
                     }
                   }
                 }
