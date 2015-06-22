@@ -1,7 +1,10 @@
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 body{
-background:#0F3B60;	
+background:#0F3B60;
+color:white;
 }
+
+
 .displayinline > li > img{
   height:8%;
   width:8%;
