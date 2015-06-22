@@ -32,6 +32,24 @@
 	left:350px;	
 }
 
+#button1{
+  position:relative;
+  top:-10px;
+  left:350px; 
+}
+
+#button2{
+  position:relative;
+  top:-10px;
+  left:350px; 
+}
+
+#button3{
+  position:relative;
+  top:-10px;
+  left:350px; 
+}
+
 .about_xlanguager > .moreinfo > h2{
   margin-right: 10px;
   margin-left: 10px;
