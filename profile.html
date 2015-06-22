@@ -47,50 +47,90 @@
        var userid;
        var username;
        
-       $(document).on('submit','#commentType',function(eventObject){
-         eventObject.preventDefault();
-         var Comment = Parse.Object.extend("Comment") ;
-         var comment = new Comment();
-         comment.set("message",$("#comment").val());
-         comment.set("writer",Parse.User.current());
-         comment.set("userid",userid);
-         comment.set("targetid",userid);
+      // $(document).on('submit','#commentType',function(eventObject){
+      //   eventObject.preventDefault();
+      //   var Comment = Parse.Object.extend("Comment") ;
+      //   var comment = new Comment();
+      //   comment.set("message",$("#comment").val());
+      //   comment.set("writer",Parse.User.current());
+      //   comment.set("userid",userid);
+      //   comment.set("targetid",userid);
 
-         comment.save({
-           success : function(savedParseObject){
-           alert("留言成功");
-           window.location.reload();
-           },
-           error : function (errorObject){
-             console.log(errorObject);
-             alert(errorObject.message);
-           }
-         });
-       });
+      //   comment.save({
+      //     success : function(savedParseObject){
+      //     alert("留言成功");
+      //     window.location.reload();
+      //     },
+      //     error : function (errorObject){
+      //       console.log(errorObject);
+      //       alert(errorObject.message);
+      //     }
+      //   });
+      // });
        
-       var Comment = Parse.Object.extend("Comment") ;
-       var queryComments = new Parse.Query (Comment) ;
-       queryComments.include("writer");
-       queryComments.equalTo("targetid",userid);
-       queryComments.find({
-        success : function(arrayOfQueriedObjects){
-          console.log (arrayOfQueriedObjects);
-          for (var i = 0 ; i < arrayOfQueriedObjects.length ; i++){
-            comment = arrayOfQueriedObjects[i] ;
+      // var Comment = Parse.Object.extend("Comment") ;
+      // var queryComments = new Parse.Query (Comment) ;
+      // //queryComments.include("writer");
+      // //queryComments.equalTo("targetid",value);
+       
+      // queryComments.find({
+      //   success : function(resultComment){
+      //     console.log (resultComment);
+      //     var commentindex = [];
+      //     var fromid = [];
+      //     var fromname = [];
+      //     var j=0;
+      //     for (var i = resultComment.length - 1 ; i >= 0 ; i--){
             
-            $("#commentAll").append(
-              "<div class='row'><div class='people col-md-2'><img src='profile.jpg' class='img-circle' width='75' height='75'>"
-               + comment.get("userid")
-               + "<p>※※※※※</p></div><div class='comment_contents col-md-10' id='commentShow'>"
-               + comment.get("message")
-               +"</div></div><hr>");
-          }
-        },
-        error : function(errorObject){
-          alert(errorObject.message) ;
-        }
-      });
-
+      //       if(resultComment[i].get('targetid') == userid){
+      //         console.log('Values comment');
+      //         fromid[j] = resultComment[i].get('userid');
+      //         commentindex[j] = resultComment[i].get('message');
+      //         // alert(fromid[0]);
+      //         // alert(fromid[1]);
+      //         // alert(commentindex[0]);
+      //         j++;
+      //       }
+      //     }
+              
+      //         var name = Parse.Object.extend("name");
+      //         var name_get = new Parse.Query(name);
+      //         var y;
+      //         var u_name = [];
+              
+      //         name_get.find({
+      //         success:function(array2){
+                
+      //           for(var x = 0; x < j; x++){
+      //             for(y = array2.length-1; y >= 0; y--){
+      //               if(fromid[x] == array2[y].get('userid')){
+      //                 u_name[x] = array2[y].get('username');
+      //               }
+      //             }
+      //           }
+                
+      //           for (var y = 1; y <= j; y++){
+      //             $("#commentAll").append(
+      //               "<div class='row'><div class='people col-md-2'>"
+      //               + "<img src='http://graph.facebook.com/" + fromid[y-1] + "/picture' class='img-circle' width='75' height='75'>"
+      //               + "<p id='commentUser'>" + u_name[y-1] + "</p>"
+      //               + "</div><div class='comment_contents col-md-10' id='commentShow'>"
+      //               + commentindex[y-1]
+      //               +"</div></div><hr>");             
+      //           }
+                
+      //         },
+      //         error: function(error) {
+      //           console.log(error) ;
+      //           alert(error.message);
+      //         },
+              
+      //       });
+      //   },
+      //   error : function(errorObject){
+      //     alert(errorObject.message) ;
+      //   }
+      // });
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
            appId      : '836005236481666', // Facebook App ID
@@ -364,7 +404,7 @@
 
 
               for(var k1=0;k1<j2;k1++){
-                if(array2[i].get('to_id')== toid[k]){
+                if(array2[i].get('to_id')== toid[k1]){
                   same2 = true;
                   console.log('same1 occures');
                 }
@@ -400,118 +440,118 @@
             $('#d2').append(date2[1]);
             $('#d3').append(date2[2]);
 
-            if(place[0]== 1){
+            if(place[0]== 0){
               $('#place1').append('Here Cafe');
             }
-            if(place[0]==2){
+            if(place[0]==1){
               $('#place1').append('Arty');
             }
-            if(place[0]==3){
+            if(place[0]==2){
               $('#place1').append('老薑咖啡');
             }
-            if(place[0]==4){
+            if(place[0]==3){
               $('#place1').append('默沏');
             }
-            if(place[0]==5){
+            if(place[0]==4){
               $('#place1').append('小公寓');
             }
-            if(place[0]==6){
+            if(place[0]==5){
               $('#place1').append('道南館');
             }
 
-            if(place[1]== 1){
+            if(place[1]== 0){
               $('#place2').append('Here Cafe');
             }
-            if(place[1]==2){
+            if(place[1]==1){
               $('#place2').append('Arty');
             }
-            if(place[1]==3){
+            if(place[1]==2){
               $('#place2').append('老薑咖啡');
             }
-            if(place[1]==4){
+            if(place[1]==3){
               $('#place2').append('默沏');
             }
-            if(place[1]==5){
+            if(place[1]==4){
               $('#place2').append('小公寓');
             }
-            if(place[1]==6){
+            if(place[1]==5){
               $('#place2').append('道南館');
             }
 
-            if(place[2]== 1){
+            if(place[2]== 0){
               $('#place3').append('Here Cafe');
             }
-            if(place[2]==2){
+            if(place[2]==1){
               $('#place3').append('Arty');
             }
-            if(place[2]==3){
+            if(place[2]==2){
               $('#place3').append('老薑咖啡');
             }
-            if(place[2]==4){
+            if(place[2]==3){
               $('#place3').append('默沏');
             }
-            if(place[2]==5){
+            if(place[2]==4){
               $('#place3').append('小公寓');
             }
-            if(place[2]==6){
+            if(place[2]==5){
               $('#place3').append('道南館');
             }
 
 
-            if(place2[0]== 1){
+            if(place2[0]== 0){
               $('#p1').append('Here Cafe');
             }
-            if(place2[0]==2){
+            if(place2[0]==1){
               $('#p1').append('Arty');
             }
-            if(place2[0]==3){
+            if(place2[0]==2){
               $('#p1').append('老薑咖啡');
             }
-            if(place2[0]==4){
+            if(place2[0]==3){
               $('#p1').append('默沏');
             }
-            if(place2[0]==5){
+            if(place2[0]==4){
               $('#p1').append('小公寓');
             }
-            if(place2[0]==6){
+            if(place2[0]==5){
               $('#p1').append('道南館');
             }
 
-            if(place2[1]== 1){
+            if(place2[1]== 0){
               $('#p2').append('Here Cafe');
             }
-            if(place2[1]==2){
+            if(place2[1]==1){
               $('#p2').append('Arty');
             }
-            if(place2[1]==3){
+            if(place2[1]==2){
               $('#p2').append('老薑咖啡');
             }
-            if(place2[1]==4){
+            if(place2[1]==3){
               $('#p2').append('默沏');
             }
-            if(place2[1]==5){
+            if(place2[1]==4){
               $('#p2').append('小公寓');
             }
-            if(place2[1]==6){
+            if(place2[1]==5){
               $('#p2').append('道南館');
             }
 
-            if(place2[2]== 1){
+            if(place2[2]== 0){
               $('#p3').append('Here Cafe');
             }
-            if(place2[2]==2){
+            if(place2[2]==1){
               $('#p3').append('Arty');
             }
-            if(place2[2]==3){
+            if(place2[2]==2){
               $('#p3').append('老薑咖啡');
             }
-            if(place2[2]==4){
+            if(place2[2]==3){
               $('#p3').append('默沏');
             }
-            if(place2[2]==5){
+            if(place2[2]==4){
               $('#p3').append('小公寓');
             }
-            if(place2[2]==6){
+            if(place2[2]==5){
               $('#p3').append('道南館');
             }
 
@@ -532,11 +572,15 @@
                     if(fromid[x] == array2[y].get('userid')){
                       from_name[x] = array2[y].get('username');
                     }
-
+                  }
+                }
+                
+                for(var x=0;x<j2;x++){
+                  for(y=array2_length-1;y>=0;y--){
                     if(toid[x] == array2[y].get('userid')){
                       toname[x]= array2[y].get('username');
-                    }
                   }
+                }
                 }
 
                 $('#name1').append(from_name[0]); 
@@ -600,8 +644,6 @@
               }
             }
 
-
-
                 if(f==true){
                   $('#language').append("<img src='french.ico' alt='French' height='50' width='50'>");
                 }
@@ -649,6 +691,90 @@
           }
           });
           
+          $(document).on('submit','#commentType',function(eventObject){
+         eventObject.preventDefault();
+         var Comment = Parse.Object.extend("Comment") ;
+         var comment = new Comment();
+         comment.set("message",$("#comment").val());
+         comment.set("writer",Parse.User.current());
+         comment.set("userid",userid);
+         comment.set("targetid",userid);
+
+         comment.save({
+           success : function(savedParseObject){
+           alert("留言成功");
+           window.location.reload();
+           },
+           error : function (errorObject){
+             console.log(errorObject);
+             alert(errorObject.message);
+           }
+         });
+       });
+       
+       var Comment = Parse.Object.extend("Comment") ;
+       var queryComments = new Parse.Query (Comment) ;
+       //queryComments.include("writer");
+       //queryComments.equalTo("targetid",value);
+       
+       queryComments.find({
+        success : function(resultComment){
+          console.log (resultComment);
+          var commentindex = [];
+          var fromid = [];
+          var fromname = [];
+          var j=0;
+          for (var i = resultComment.length - 1 ; i >= 0 ; i--){
+            
+            if(resultComment[i].get('targetid') == userid){
+              console.log('Values comment');
+              fromid[j] = resultComment[i].get('userid');
+              commentindex[j] = resultComment[i].get('message');
+              // alert(fromid[0]);
+              // alert(fromid[1]);
+              // alert(commentindex[0]);
+              j++;
+            }
+          }
+              
+              var name = Parse.Object.extend("name");
+              var name_get = new Parse.Query(name);
+              var y;
+              var u_name = [];
+              
+              name_get.find({
+              success:function(array2){
+                
+                for(var x = 0; x < j; x++){
+                  for(y = array2.length-1; y >= 0; y--){
+                    if(fromid[x] == array2[y].get('userid')){
+                      u_name[x] = array2[y].get('username');
+                    }
+                  }
+                }
+                
+                for (var y = 1; y <= j; y++){
+                  $("#commentAll").append(
+                    "<div class='row'><div class='people col-md-2'>"
+                    + "<img src='http://graph.facebook.com/" + fromid[y-1] + "/picture' class='img-circle' width='75' height='75'>"
+                    + "<p id='commentUser'>" + u_name[y-1] + "</p>"
+                    + "</div><div class='comment_contents col-md-10' id='commentShow'>"
+                    + commentindex[y-1]
+                    +"</div></div><hr>");             
+                }
+                
+              },
+              error: function(error) {
+                console.log(error) ;
+                alert(error.message);
+              },
+              
+            });
+        },
+        error : function(errorObject){
+          alert(errorObject.message) ;
+        }
+      });
 
         }
 
@@ -695,25 +821,25 @@
                   
                   <div class="display_inline">
                   <ul>
-                  <li><a href="search.html?lang=spain"><img src="spain.ico" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="search.html?lang=japan"><img src="japan.ico" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="search.html?lang=frence"><img src="french.ico" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=spain"><img src="spain.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=japan"><img src="japan.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=frence"><img src="french.jpg" class="img-circle" width="50" height="50"></a></li>
                   </ul>
                   </div>
                   
                  <div class="display_inline">
                   <ul>
-                  <li><a href="search.html?lang=taiwan"><img src="taiwan.ico" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="search.html?lang=usa"><img src="usa.ico" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="search.html?lang=germany"><img src="germany.ico" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=taiwan"><img src="taiwan.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=usa"><img src="usa.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=germany"><img src="germany.jpg" class="img-circle" width="50" height="50"></a></li>
                   </ul>
                   </div>
 
                   <div class="display_inline">
                   <ul>
-                  <li><a href="search.html?lang=hongkong"><img src="hongkong.ico" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="search.html?lang=thailand"><img src="thailand.ico" class="img-circle" width="50" height="50"></a></li>
-                  <li><a href="search.html?lang=korea"><img src="korea.ico" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=hongkong"><img src="hongkong.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=thailand"><img src="thailand.jpg" class="img-circle" width="50" height="50"></a></li>
+                  <li><a href="search.html?lang=korea"><img src="korea.jpg" class="img-circle" width="50" height="50"></a></li>
                   </ul>
                   </div>
                 </ul>
@@ -885,3 +1011,5 @@
 
 </script>
 </html>
+
+
