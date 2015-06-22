@@ -529,6 +529,49 @@
           window.location = link;
 
     }
+    
+     $(document).on('click','#langSubmit',function(e){
+        	var eng = document.getElementById('eng');
+        	var spn = document.getElementById('spn');
+        	var jpn = document.getElementById('jpn');
+			var man = document.getElementById('man');
+			var ctn = document.getElementById('ctn');
+			var fra = document.getElementById('fra');
+			var thai = document.getElementById('thai');
+			var kor = document.getElementById('kor');
+			var ger = document.getElementById('ger');
+
+			if(eng.checked){
+				window.location = 'search.html?lang=usa';
+			}
+
+			if(spn.checked){
+				window.location = 'search.html?lang=spain';
+			}
+
+			if(jpn.checked){
+				window.location = 'search.html?lang=japan';
+			}
+
+			if(man.checked){
+				window.location = 'search.html?lang=taiwan';
+			}
+			if(ctn.checked){
+				window.location = 'search.html?lang=hongkong';
+			}
+			if(fra.checked){
+				window.location = 'search.html?lang=frence';
+			}
+			if(thai.checked){
+				window.location = 'search.html?lang=thailand';
+			}
+			if(kor.checked){
+				window.location = 'search.html?lang=korea';
+			}
+			if(ger.checked){
+				window.location = 'search.html?lang=germany';
+			}
+        });
 
 
       
@@ -643,50 +686,59 @@
 <div id="body">
   <div class="row">
   
-  <div class="country col-xs-3 col-sm-3 col-md-3">
+    <div class="country col-xs-3 col-sm-3 col-md-3">
           
         <h3 class="title" id="Lan">Languages</h3>
         
         <div>   
-          <input type="checkbox" name="language" id="eng"> 
+          <input type="radio" name="language" id="eng"> 
           <label for="eng" class="lanCheck">English</label>
         </div>
       
         <div>     
-          <input type="checkbox" name="language" id="spn">    
+          <input type="radio" name="language" id="spn">    
           <label for="spn" class="lanCheck">Spanish</label> 
         </div>
       
         <div>      
-          <input type="checkbox" name="language" id="jpn">    
+          <input type="radio" name="language" id="jpn">    
           <label for="jpn" class="lanCheck">Japanese</label>
         </div>
       
         <div>  
-          <input type="checkbox" name="language" id="man">    
+          <input type="radio" name="language" id="man">    
           <label for="man" class="lanCheck">Mandarin Chinese</label>  
         </div>
     
         <div>  
-          <input type="checkbox" name="language" id="ctn">    
+          <input type="radio" name="language" id="ctn">    
           <label for="ctn" class="lanCheck">Cantonese</label> 
         </div>
       
         <div>       
-          <input type="checkbox" name="language" id="fra">   
+          <input type="radio" name="language" id="fra">   
           <label for="fra" class="lanCheck">French</label>    
         </div>
       
         <div>     
-          <input type="checkbox" name="language" id="por">    
-          <label for="por" class="lanCheck">Portuguese</label>  
+          <input type="radio" name="language" id="thai">    
+          <label for="por" class="lanCheck">Thai</label>  
         </div>
       
         <div>  
-          <input type="checkbox" name="language" id="min">    
-          <label for="min" class="lanCheck">Taiwanese (Min Chinese)</label>
+          <input type="radio" name="language" id="kor">    
+          <label for="min" class="lanCheck">Korean</label>
         </div>
-  
+
+        <div>  
+          <input type="radio" name="language" id="ger">    
+          <label for="min" class="lanCheck">German</label>
+        </div>
+
+        <div class="form-group">
+           <button id="langSubmit" name="langSubmit" class="btn btn-primary">Submit</button>
+        </div>
+ 
   </div><!-- /.country -->
   
   <div class="contain1 col-xs-offset-3 col-sm-offset-3 col-md-offset-3">
