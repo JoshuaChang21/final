@@ -128,3 +128,7 @@
 #easybutton{
  position:static;
 }
+
+div.ui.button{
+ vertical-align:middle;
+}
