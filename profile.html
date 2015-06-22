@@ -436,9 +436,11 @@
             $('#date1').append(date[0]);
             $('#date2').append(date[1]);
             $('#date3').append(date[2]);
+            $('follower_count').append(date.length);
             $('#d1').append(date2[0]);
             $('#d2').append(date2[1]);
             $('#d3').append(date2[2]);
+            $('following_count').append(date2.length);
 
             if(place[0]== 0){
               $('#place1').append('Here Cafe');
@@ -937,8 +939,8 @@
   <ul class="tabs">
     <li class="active"><a href="#profile"><br>Profile</a></li>
     <li><a href="#calendar"><br>calendar</a></li>
-    <li><a href="#follower"><span class="value" id="follower_count">0</span> <br><span class="label">Invited from</span></a></li>
-    <li><a href="#following"><span class="value" id="following_count">0</span> <br><span class="label">Inviting</a></li>
+    <li><a href="#follower"><span class="value" id="follower_count"></span> <br><span class="label">Invited from</span></a></li>
+    <li><a href="#following"><span class="value" id="following_count"></span> <br><span class="label">Inviting</a></li>
   </ul>
   <div class="clr"></div>
 
