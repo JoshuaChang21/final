@@ -4,7 +4,6 @@
 .carousel {
   height: 450px;
   margin-bottom: 60px;
-  font-family: 'Glegoo', serif;
 }
 
 .carousel-inner > .item > img {
@@ -56,6 +55,7 @@
   margin-right: 10px;
   margin-left: 10px;
   color:#0F3B60;
+  font-family: 'Graduate', cursive;
 
 }
 
