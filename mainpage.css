@@ -1,9 +1,10 @@
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
-@import url(http://fonts.googleapis.com/css?family=Graduate|Gleogoo|Monda);
+@import url(http://fonts.googleapis.com/css?family=Graduate|Abel|Lato);
 
 .carousel {
   height: 450px;
   margin-bottom: 60px;
+  font-family: 'Abel', sans-serif;
 }
 
 .carousel-inner > .item > img {
@@ -129,4 +130,5 @@
 
 profileBtn{
  margin-top:21px;
+ font-family: 'Abel', sans-serif;
 }
