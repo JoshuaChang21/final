@@ -126,12 +126,11 @@ article > div{
 
 .profile_info > p{
   font-size:20px;
-  font-family: cursive;
+ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
 .profile_info > span{
   font-size:15px;
-  font-family: 'Abel', sans-serif;
 }
 
 .profile_calendar > img{
