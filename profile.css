@@ -1,7 +1,7 @@
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 
 body{
- font-family:monospace;
+ font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 .aboutBar > img{
   margin: auto;
@@ -246,7 +246,7 @@ article > div{
 
 .profile_info > span{
   font-size:20px;
-  font-family: monospace;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   margin:10px 20px;
 }
 
@@ -259,7 +259,7 @@ article > div{
 
 .place > p{
   text-align: center;
-  font-family: monospace;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 20px;  
 }
 
