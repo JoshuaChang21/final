@@ -1,7 +1,8 @@
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
-@import url(http://fonts.googleapis.com/css?family=Abel|Lato);
 
-
+body{
+ font-family:monospace;
+}
 .aboutBar > img{
   margin: auto;
   display:block;
@@ -124,7 +125,7 @@ article > div{
 
 .profile_info > p{
   font-size:20px;
- font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-family:monospace;
 }
 
 .profile_info > span{
@@ -245,8 +246,7 @@ article > div{
 
 .profile_info > span{
   font-size:20px;
-  //font-family: monospace;
-  font-family: 'Abel', sans-serif;
+  font-family: monospace;
   margin:10px 20px;
 }
 
