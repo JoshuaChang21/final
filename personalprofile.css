@@ -1,10 +1,10 @@
+@import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
+
 .place > p{
 	text-align: center;
 	font-family: monospace;
 	font-size: 25px;	
 }
-
-@import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 
 .aboutBar > img{
   margin: auto;
@@ -60,7 +60,7 @@ ul.tabs li {
   border: none;
   border-bottom: none;
   float: left;
-  margin: 0 1em 0 1em;
+  margin: 0 1.5em 0 1em;
   padding: .25em .5em;
 }
 
@@ -284,5 +284,5 @@ article > div{
 }
 
 ul.tabs{
-  margin-left:28%;
+  margin-left:36%;
 }
