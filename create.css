@@ -4,11 +4,9 @@ background:#0F3B60;
 color:#F6DCA4;
 font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
-
-#create_btn:{
+button{
   color:#3300CC;
 }
-
 
 .displayinline > li > img{
   height:8%;
