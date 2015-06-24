@@ -7,8 +7,8 @@ font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 .btn{
   color:#3300CC;
 }
-#prefer {
-  color:#000000;
+select#prefer, input#more_info {
+  color: #000000;
 }
 
 .displayinline > li > img{
