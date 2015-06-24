@@ -5,6 +5,10 @@ color:#F6DCA4;
 font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;
 }
 
+#create_btn:{
+  color:#3300CC;
+}
+
 
 .displayinline > li > img{
   height:8%;
