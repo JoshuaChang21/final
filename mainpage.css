@@ -3,6 +3,11 @@
 h2, p {
   font-family:Microsoft JhengHei;
 }
+
+b, strong{
+  padding-left: 45px;
+}
+
 .carousel {
   height: 450px;
   margin-bottom: 60px;
