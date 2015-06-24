@@ -1,6 +1,8 @@
 @import url(http://netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css);
 @import url(http://fonts.googleapis.com/css?family=Graduate|Abel|Lato);
-
+body{
+  font-family:Microsoft JhengHei;
+}
 .carousel {
   height: 450px;
   margin-bottom: 60px;
@@ -60,10 +62,11 @@
 }
 
 .about_xlanguager > .moreinfo > p{
+  padding-left:45px;
   margin-right: 10px;
   margin-left: 10px;
   color:#0F3B60;
-
+  font-family:Microsoft JhengHei;
 }
 
 .about_xlanguager > .moreinfo > img{
