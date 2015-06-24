@@ -4,10 +4,6 @@ h2, p {
   font-family:Microsoft JhengHei;
 }
 
-b, strong{
-  padding-left: 45px;
-}
-
 .carousel {
   height: 450px;
   margin-bottom: 60px;
@@ -63,7 +59,7 @@ b, strong{
   margin-right: 10px;
   margin-left: 10px;
   color:#0F3B60;
-
+  padding-left: 45px;
 }
 
 .about_xlanguager > .moreinfo > p{
